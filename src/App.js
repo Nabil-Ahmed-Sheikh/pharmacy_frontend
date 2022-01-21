@@ -1,22 +1,18 @@
 import "./App.css";
-import HomeScreen from "./screens/HomeScreen";
+import { Switch, Route } from "react-router-dom";
 import LoginScreen from "./screens/LoginScreen";
-import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import DashScreen from "./screens/DashScreen";
-import NotFoundScreen from "./screens/NotFoundScreen";
-
+import Routes from "./routes/Routes";
+import "antd/dist/antd.css";
 function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route index element={<HomeScreen />} />
-        <Route exact path="/login" element={<LoginScreen />} />
-        <Route exact path="/user/dashboard" element={<DashScreen />} />
-        <Route path="*" element={<NotFoundScreen />} />
-      </Routes>
+      <Switch>
+        <Route path="/" component={Routes} />
+        <Route exact path="/login" component={LoginScreen} />
+      </Switch>
       <Footer />
     </>
   );

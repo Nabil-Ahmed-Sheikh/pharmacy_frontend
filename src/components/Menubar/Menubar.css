@@ -1,0 +1,6 @@
+.menubar {
+    width: var(--sidebarWidth);
+    height: calc(100vh - 120px);
+    top: 60px;
+    position: absolute;
+}

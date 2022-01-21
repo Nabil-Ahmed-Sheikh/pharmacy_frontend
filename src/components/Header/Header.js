@@ -3,9 +3,9 @@ import "./Header.css";
 
 const Header = () => {
   return (
-    <Header className="header">
-      <h2>Header</h2>
-    </Header>
+    <div className="header">
+      <h1>Header</h1>
+    </div>
   );
 };
 

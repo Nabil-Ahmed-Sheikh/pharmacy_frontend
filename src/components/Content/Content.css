@@ -1,0 +1,13 @@
+.content {
+    margin-left: var(--sidebarWidth);
+    margin-top: 60px;
+    height: calc(100vh - 120px);
+    width: calc(100vw - var(--sidebarWidth));
+}
+
+.content_collapsed{
+    margin-left: 80px;
+    margin-top: 60px;
+    height: calc(100vh - 120px);
+    width: calc(100vw - 80px);
+}

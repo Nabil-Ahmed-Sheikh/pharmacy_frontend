@@ -1,0 +1,8 @@
+.dashboard-container {
+    min-height: fit-content;
+    position: relative;
+    border-top: 1px solid #ddd;
+    height: calc(100vh - 80px);
+    width: 1920px;
+    max-width: 100%;
+  }
