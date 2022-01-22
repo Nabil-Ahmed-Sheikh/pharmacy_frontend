@@ -17,68 +17,68 @@
     02.     PurchasesList---------Done
 
 06.	 Sales
-    01.    Add Sale
-    02.    Sales List
+    01.    AddSale---------------Done
+    02.    SalesList-------------Done
 
 07.	 Collection
-    01.    Add Collection
-    02.    Collection List
+    01.    AddCollection---------Done
+    02.    CollectionList--------Done
 
 08.	 Payment
-    01.    Add Payment
-    02.    Payment List
+    01.    AddPayment-----------Done
+    02.    PaymentList----------Done
 
 09.	 Sales Return
 
 10.	 Stock Matching
 
-11.	 HR Management
-    01.    Employee Type
-    02.    Designation
-    03.    Employee List
-    04.    Monthly Salary
+11.	 HRManagement
+    01.    EmployeeType----------Done
+    02.    Designation----------Done
+    03.    EmployeeList----------Done
+    04.    MonthlySalary----------Done
 
 12.	 Account
-    01.    Expense List
-    02.    Others Income
-    03.    Bank Deposit
-    04.    Bank Withdraw
-    05.    Bank Transfer
+    01.    ExpenseList---------Done
+    02.    OthersIncome---------Done
+    03.    BankDeposit---------Done
+    04.    BankWithdraw---------Done
+    05.    BankTransfer---------Done
 
 13.	 Report
-    01.    Cash Statement Report
-    02.    Expire Medicine Report
-    03.    Stock Report
-    04.    Sales Report
-    05.    Purchases Report
-    06.    Sales Details
-    07.    Customer Report
-    08.    Supplier Report
-    09.    Customer Due Report
-    10.    Bank Statement
-    11.    Collection Report
-    12.    Payment Report
-    13.    Employee Report
-    14.    Employee Expense
-    15.    Employee Ledger
-    16.    Employee Salary Sheet
-    17.    Customer Ledger
-    18.    Supplier Ledger
-    19.    Expense Head Report
-    20.    Head Wise Report
-    21.    Expense Details Report
-    22.    Invoice Wise Profit
-    23.    Net Profit & Loss
+    01.    CashStatementReport---------Done
+    02.    ExpireMedicineReport---------Done
+    03.    StockReport---------Done
+    04.    SalesReport---------Done
+    05.    PurchasesReport---------Done
+    06.    SalesDetails---------Done
+    07.    CustomerReport---------Done
+    08.    SupplierReport---------Done
+    09.    CustomerDueReport---------Done
+    10.    BankStatement---------Done
+    11.    CollectionReport---------Done
+    12.    PaymentReport---------Done
+    13.    EmployeeReport---------Done
+    14.    EmployeeExpense---------Done
+    15.    EmployeeLedger---------Done
+    16.    EmployeeSalarySheet---------Done
+    17.    CustomerLedger---------Done
+    18.    SupplierLedger---------Done
+    19.    ExpenseHeadReport---------Done
+    20.    HeadWiseReport---------Done
+    21.    ExpenseDetailsReport---------Done
+    22.    InvoiceWiseProfit---------Done
+    23.    NetProfitLoss---------Done
 
 14.	 Setting
- 	01.    Generic List
- 	02.    Company List
- 	03.    Medicine Form
-    04.    Rack List
-    05.    Journal List
-    06.    Account Head
-    07.    Sub Head
-    08.    Bank Setup
-    09.    Company Setup
-    10.    Database BacKup
-    11.    Commit Test
+ 	01.    GenericList---------Done
+ 	02.    CompanyList---------Done
+ 	03.    MedicineForm---------Done
+    04.    RackList---------Done
+    05.    JournalList---------Done
+    06.    AccountHead---------Done
+    07.    SubHead---------Done
+    08.    BankSetup---------Done
+    09.    CompanySetup---------Done
+    10.    DatabaseBackup---------Done
+    11.    CommitTest---------Done
