@@ -9,10 +9,13 @@ function App() {
   return (
     <>
       <Header />
-      <Switch>
-        <Route path="/" component={Routes} />
-        <Route exact path="/login" component={LoginScreen} />
-      </Switch>
+      <div className="pageContainer">
+        <Switch>
+          <Route exact path="/login" component={LoginScreen} />
+          <Route path="/" component={Routes} />
+        </Switch>
+      </div>
+      <Footer />
     </>
   );
 }
