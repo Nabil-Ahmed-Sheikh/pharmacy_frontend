@@ -2,8 +2,6 @@ import React from "react";
 import "./Content.css";
 import { Route, Switch } from "react-router-dom";
 
-
-
 import UserTypes from "../HRAdmin/UserTypes";
 import Users from "../HRAdmin/Users";
 
@@ -16,31 +14,24 @@ import MedicineList from "../Medicine/MedicineList";
 import AddPurchases from "../Purchases/AddPurchases";
 import PurchasesList from "../Purchases/PurchasesList";
 
-
 const UserContent = ({ collapsed }) => {
   return (
     <div className={collapsed ? "content_collapsed" : "content"}>
       <Switch>
         <Route exact path="/user/user_types" component={UserTypes} />
         <Route exact path="/user/users" component={Users} />
-        
+
         <Route exact path="/user/customer_list" component={CustomerList} />
         <Route exact path="/user/supplier_list" component={SupplierList} />
 
         <Route exact path="/user/add_medicine" component={AddMedicine} />
         <Route exact path="/user/medicine_list" component={MedicineList} />
 
-        
         <Route exact path="/user/add_purchases" component={AddPurchases} />
         <Route exact path="/user/purchases_list" component={PurchasesList} />
 
-        
         <Route exact path="/user/add_sale" component={AddSale} />
         <Route exact path="/user/sales_list" component={SalesList} />
-
-      
-
-
       </Switch>
     </div>
   );
