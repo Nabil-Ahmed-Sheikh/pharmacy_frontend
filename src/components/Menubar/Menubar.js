@@ -33,7 +33,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
         inlineCollapsed={collapsed}
       >
         <MenuItem key="1" icon={<FiGrid />}>
-          Dashboard
+          Dashboards
         </MenuItem>
         <SubMenu key="2" title="HR Admin" icon={<FiUsers />}>
           <MenuItem onClick={() => goto("/user_types")}>User Type</MenuItem>
