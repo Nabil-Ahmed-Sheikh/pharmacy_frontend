@@ -1,0 +1,84 @@
+1.	Dashboard
+
+2.	HR Admin
+    01.     Users type------------Done
+    02.     User------------------Done
+
+03.	 Contact
+    01.    Customer List----------Done
+    02.    Supplier List----------Done
+
+04.	 Medicine
+    01.     Add Medicine----------Done
+    02.     Medicine List---------Done
+
+05.	 Purchases
+    01.     Add Purchases---------Done
+    02.     PurchasesList---------Done
+
+06.	 Sales
+    01.    Add Sale
+    02.    Sales List
+
+07.	 Collection
+    01.    Add Collection
+    02.    Collection List
+
+08.	 Payment
+    01.    Add Payment
+    02.    Payment List
+
+09.	 Sales Return
+
+10.	 Stock Matching
+
+11.	 HR Management
+    01.    Employee Type
+    02.    Designation
+    03.    Employee List
+    04.    Monthly Salary
+
+12.	 Account
+    01.    Expense List
+    02.    Others Income
+    03.    Bank Deposit
+    04.    Bank Withdraw
+    05.    Bank Transfer
+
+13.	 Report
+    01.    Cash Statement Report
+    02.    Expire Medicine Report
+    03.    Stock Report
+    04.    Sales Report
+    05.    Purchases Report
+    06.    Sales Details
+    07.    Customer Report
+    08.    Supplier Report
+    09.    Customer Due Report
+    10.    Bank Statement
+    11.    Collection Report
+    12.    Payment Report
+    13.    Employee Report
+    14.    Employee Expense
+    15.    Employee Ledger
+    16.    Employee Salary Sheet
+    17.    Customer Ledger
+    18.    Supplier Ledger
+    19.    Expense Head Report
+    20.    Head Wise Report
+    21.    Expense Details Report
+    22.    Invoice Wise Profit
+    23.    Net Profit & Loss
+
+14.	 Setting
+ 	01.    Generic List
+ 	02.    Company List
+ 	03.    Medicine Form
+    04.    Rack List
+    05.    Journal List
+    06.    Account Head
+    07.    Sub Head
+    08.    Bank Setup
+    09.    Company Setup
+    10.    Database BacKup
+    11.    Commit Test
