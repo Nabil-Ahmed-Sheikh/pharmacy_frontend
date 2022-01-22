@@ -13,7 +13,6 @@ function App() {
         <Route path="/" component={Routes} />
         <Route exact path="/login" component={LoginScreen} />
       </Switch>
-      <Footer />
     </>
   );
 }
