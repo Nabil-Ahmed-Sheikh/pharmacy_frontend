@@ -14,6 +14,7 @@ import AddMedicine from "../Medicine/AddMedicine";
 import MedicineList from "../Medicine/MedicineList";
 
 import AddPurchases from "../Purchases/AddPurchases";
+import PurchasesList from "../Purchases/PurchasesList";
 
 
 const UserContent = ({ collapsed }) => {
@@ -31,8 +32,13 @@ const UserContent = ({ collapsed }) => {
 
         
         <Route exact path="/user/add_purchases" component={AddPurchases} />
+        <Route exact path="/user/purchases_list" component={PurchasesList} />
 
         
+        <Route exact path="/user/add_sale" component={AddSale} />
+        <Route exact path="/user/sales_list" component={SalesList} />
+
+      
 
 
       </Switch>

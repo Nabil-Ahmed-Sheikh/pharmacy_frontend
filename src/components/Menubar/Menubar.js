@@ -52,10 +52,12 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
                 
         <SubMenu key="5" title="Purchases" icon={<FiUsers />}>
           <MenuItem onClick={() => goto("/add_purchases")}>Add Purchases</MenuItem>
+          <MenuItem onClick={() => goto("/purchases_list")}>Purchases List</MenuItem>
         </SubMenu>
                 
         <SubMenu key="6" title="Sales" icon={<FiUsers />}>
-          <MenuItem onClick={() => goto("/add_purchases")}>Add Purchases</MenuItem>
+          <MenuItem onClick={() => goto("/add_sale")}>Add Sale</MenuItem>
+          <MenuItem onClick={() => goto("/sales_list")}>Sales List</MenuItem>
         </SubMenu>
                 
         <SubMenu key="7" title="Collection" icon={<FiUsers />}>
