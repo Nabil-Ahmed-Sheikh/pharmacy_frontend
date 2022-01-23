@@ -16,6 +16,46 @@ import MedicineList from "../Medicine/MedicineList";
 import AddPurchases from "../Purchases/AddPurchases";
 import PurchasesList from "../Purchases/PurchasesList";
 
+import AddSale from "../Sales/AddSale";
+import SalesList from "../Sales/SalesList";
+
+import AddCollection from "../Collection/AddCollection";
+import CollectionList from "../Collection/CollectionList";
+
+import AddPayment from "../Payment/AddPayment";
+import PaymentList from "../Payment/PaymentList";
+
+import EmployeeType from "../HRManagement/EmployeeType";
+import Designation from "../HRManagement/Designation";
+import EmployeeList from "../HRManagement/EmployeeList";
+import MonthlySalary from "../HRManagement/MonthlySalary";
+
+import ExpenseList from "../Account/ExpenseList";
+import OthersIncome from "../Account/OthersIncome";
+import BankDeposit from "../Account/BankDeposit";
+import BankWithdraw from "../Account/BankWithdraw";
+import BankTransfer from "../Account/BankTransfer";
+
+import CashStatementReport from "../Report/CashStatementReport";
+import ExpireMedicineReport from "../Report/ExpireMedicineReport";
+import StockReport from "../Report/StockReport";
+import SalesReport from "../Report/SalesReport";
+import PurchasesReport from "../Report/PurchasesReport";
+import SalesDetails from "../Report/SalesDetails";
+import CustomerReport from "../Report/CustomerReport";
+import SupplierReport from "../Report/SupplierReport";
+import CustomerDueReport from "../Report/CustomerDueReport";
+import BankStatement from "../Report/BankStatement";
+import CollectionReport from "../Report/CollectionReport";
+import PaymentReport from "../Report/PaymentReport";
+import EmployeeReport from "../Report/EmployeeReport";
+import EmployeeExpense from "../Report/EmployeeExpense";
+import EmployeeLedger from "../Report/EmployeeLedger";
+import EmployeeSalarySheet from "../Report/EmployeeSalarySheet";
+
+ 
+
+
 
 const UserContent = ({ collapsed }) => {
   return (
@@ -29,17 +69,79 @@ const UserContent = ({ collapsed }) => {
 
         <Route exact path="/user/add_medicine" component={AddMedicine} />
         <Route exact path="/user/medicine_list" component={MedicineList} />
-
-        
+       
         <Route exact path="/user/add_purchases" component={AddPurchases} />
         <Route exact path="/user/purchases_list" component={PurchasesList} />
-
-        
+       
         <Route exact path="/user/add_sale" component={AddSale} />
         <Route exact path="/user/sales_list" component={SalesList} />
+        
+        <Route exact path="/user/add_collection" component={AddCollection} />
+        <Route exact path="/user/collection_list" component={CollectionList} />
+        
+        <Route exact path="/user/add_payment" component={AddPayment} />
+        <Route exact path="/user/payment_list" component={PaymentList} />
+        
+        <Route exact path="/user/employee_type" component={EmployeeType} />
+        <Route exact path="/user/designation" component={Designation} />
+        <Route exact path="/user/employee_list" component={EmployeeList} />
+        <Route exact path="/user/monthly_salary" component={MonthlySalary} />
 
-      
+        <Route exact path="/user/expense_list" component={ExpenseList} />
+        <Route exact path="/user/others_income" component={OthersIncome} />
+        <Route exact path="/user/bank_deposit" component={BankDeposit} />
+        <Route exact path="/user/bank_withdraw" component={BankWithdraw} />
+        <Route exact path="/user/bank_transfer" component={BankTransfer} />
 
+        
+        <Route exact path="/user/" component={CashStatementReport} />
+        <Route exact path="/user/" component={ExpireMedicineReport} />
+        <Route exact path="/user/" component={StockReport} />
+        <Route exact path="/user/" component={SalesReport} />
+        <Route exact path="/user/" component={PurchasesReport} />
+        <Route exact path="/user/" component={SalesDetails} />
+        <Route exact path="/user/" component={CustomerReport} />
+        <Route exact path="/user/" component={SupplierReport} />
+        <Route exact path="/user/" component={CustomerDueReport} />
+        <Route exact path="/user/" component={BankStatement} />
+        <Route exact path="/user/" component={CollectionReport} />
+        <Route exact path="/user/" component={PaymentReport} />
+        <Route exact path="/user/" component={EmployeeReport} />
+        <Route exact path="/user/" component={EmployeeExpense} />
+        <Route exact path="/user/" component={EmployeeLedger} />
+        <Route exact path="/user/" component={EmployeeSalarySheet} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+
+
+        
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+        <Route exact path="/user/" component={} />
+ 
+
+       
 
       </Switch>
     </div>
