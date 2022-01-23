@@ -1,11 +1,11 @@
 import React from "react";
 
-const AddPurchases = () => {
+const CommitTest = () => {
   return (
     <div>
-      <h2>Add Purchases</h2>
+      <h2>Commit Test</h2>
     </div>
   );
 };
 
-export default AddPurchases;
+export default CommitTest;

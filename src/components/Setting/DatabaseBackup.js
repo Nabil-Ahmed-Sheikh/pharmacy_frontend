@@ -1,11 +1,11 @@
 import React from "react";
 
-const AddPurchases = () => {
+const DatabaseBackup = () => {
   return (
     <div>
-      <h2>Add Purchases</h2>
+      <h2>Database Backup</h2>
     </div>
   );
 };
 
-export default AddPurchases;
+export default DatabaseBackup;

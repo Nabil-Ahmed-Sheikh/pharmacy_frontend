@@ -1,11 +1,11 @@
 import React from "react";
 
-const AddPurchases = () => {
+const CompanySetup = () => {
   return (
     <div>
-      <h2>Add Purchases</h2>
+      <h2>Company Setup</h2>
     </div>
   );
 };
 
-export default AddPurchases;
+export default CompanySetup;

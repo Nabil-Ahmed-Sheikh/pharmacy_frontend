@@ -1,11 +1,11 @@
 import React from "react";
 
-const AddPurchases = () => {
+const AccountHead = () => {
   return (
     <div>
-      <h2>Add Purchases</h2>
+      <h2>Account Head</h2>
     </div>
   );
 };
 
-export default AddPurchases;
+export default AccountHead;

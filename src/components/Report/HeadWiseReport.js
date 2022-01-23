@@ -1,11 +1,11 @@
 import React from "react";
 
-const AddPurchases = () => {
+const HeadWiseReport = () => {
   return (
     <div>
-      <h2>Add Purchases</h2>
+      <h2>Head Wise Report</h2>
     </div>
   );
 };
 
-export default AddPurchases;
+export default HeadWiseReport;

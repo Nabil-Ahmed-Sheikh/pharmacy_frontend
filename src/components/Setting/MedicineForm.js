@@ -1,11 +1,11 @@
 import React from "react";
 
-const AddPurchases = () => {
+const MedicineForm = () => {
   return (
     <div>
-      <h2>Add Purchases</h2>
+      <h2>Medicine Form</h2>
     </div>
   );
 };
 
-export default AddPurchases;
+export default MedicineForm;

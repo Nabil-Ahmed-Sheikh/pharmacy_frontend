@@ -1,11 +1,11 @@
 import React from "react";
 
-const AddPurchases = () => {
+const InvoiceWiseProfit = () => {
   return (
     <div>
-      <h2>Add Purchases</h2>
+      <h2>Invoice Wise Profit</h2>
     </div>
   );
 };
 
-export default AddPurchases;
+export default InvoiceWiseProfit;

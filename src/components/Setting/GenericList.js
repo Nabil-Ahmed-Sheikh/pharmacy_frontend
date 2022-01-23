@@ -1,11 +1,11 @@
 import React from "react";
 
-const AddPurchases = () => {
+const GenericList = () => {
   return (
     <div>
-      <h2>Add Purchases</h2>
+      <h2>Generic List</h2>
     </div>
   );
 };
 
-export default AddPurchases;
+export default GenericList;

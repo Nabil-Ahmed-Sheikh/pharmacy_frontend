@@ -1,11 +1,11 @@
 import React from "react";
 
-const AddPurchases = () => {
+const NetProfitLoss = () => {
   return (
     <div>
-      <h2>Add Purchases</h2>
+      <h2>Net Profit Loss</h2>
     </div>
   );
 };
 
-export default AddPurchases;
+export default NetProfitLoss;
