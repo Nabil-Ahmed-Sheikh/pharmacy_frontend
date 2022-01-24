@@ -3,6 +3,7 @@
     margin-top: 60px;
     height: calc(100vh - 120px);
     width: calc(100vw - var(--sidebarWidth));
+    padding: 20px;
 }
 
 .content_collapsed{
@@ -10,4 +11,5 @@
     margin-top: 60px;
     height: calc(100vh - 120px);
     width: calc(100vw - 80px);
+    padding: 20px;
 }

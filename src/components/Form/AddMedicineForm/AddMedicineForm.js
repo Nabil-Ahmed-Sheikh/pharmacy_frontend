@@ -5,6 +5,14 @@ import { FiPlusSquare } from "react-icons/fi";
 const { Option } = Select;
 const { TextArea } = Input;
 
+const medFormStyles = {
+  padding: "10px",
+};
+
+const medDate = {
+  padding: "20px",
+};
+
 const menuList = [
   {
     name: "Beximco",
@@ -24,11 +32,11 @@ function onSearch(val) {
 
 const AddMedicineForm = () => {
   return (
-    <div className="addMedicineForm">
+    <div className="addMedicineForm" style={medFormStyles}>
       <div className="addMedicineFormHeader"></div>
       <Row>
         <Col md={8}>
-          <div>
+          <div style={medDate}>
             <label>Medicine Name</label>
             <Input addonBefore={<FiPlusSquare />} />
           </div>
