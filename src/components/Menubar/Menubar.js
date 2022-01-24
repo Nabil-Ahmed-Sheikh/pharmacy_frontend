@@ -8,7 +8,27 @@ import {
   FiUsers,
   FiTrendingUp,
   FiGrid,
+  FiTool,
+  FiDollarSign,
 } from "react-icons/fi";
+
+import { IoBuild, IoBandage, IoLogoStackoverflow } from "react-icons/io5";
+
+import { ImStatsBars, ImUsers } from "react-icons/im";
+
+import {
+  AiFillDollarCircle,
+  AiOutlineShoppingCart,
+  AiOutlineAreaChart,
+} from "react-icons/ai";
+
+import { AiTwotoneContainer } from "react-icons/ai";
+
+import { GiArrowDunk } from "react-icons/gi";
+import { MdAnchor } from "react-icons/md";
+import { RiBubbleChartLine } from "react-icons/ri";
+
+import { SiDraugiemdotlv } from "react-icons/si";
 
 const MenuItem = Menu.Item;
 const { SubMenu } = Menu;
@@ -36,12 +56,12 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           Dashboards
         </MenuItem>
 
-        <SubMenu key="2" title="HR Admin" icon={<FiUsers />}>
+        <SubMenu key="2" title="HR Admin" icon={<ImUsers />}>
           <MenuItem onClick={() => goto("/user_types")}>User Type</MenuItem>
           <MenuItem onClick={() => goto("/users")}>Users</MenuItem>
         </SubMenu>
 
-        <SubMenu key="3" title="Content" icon={<FiUsers />}>
+        <SubMenu key="3" title="Content" icon={<RiBubbleChartLine />}>
           <MenuItem onClick={() => goto("/customer_list")}>
             Customer List
           </MenuItem>
@@ -50,7 +70,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </MenuItem>
         </SubMenu>
 
-        <SubMenu key="4" title="Medicine" icon={<FiUsers />}>
+        <SubMenu key="4" title="Medicine" icon={<IoBandage />}>
           <MenuItem onClick={() => goto("/add_medicine")}>
             Add Medicine
           </MenuItem>
@@ -59,7 +79,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </MenuItem>
         </SubMenu>
 
-        <SubMenu key="5" title="Purchases" icon={<FiUsers />}>
+        <SubMenu key="5" title="Purchases" icon={<AiOutlineShoppingCart />}>
           <MenuItem onClick={() => goto("/add_purchases")}>
             Add Purchases
           </MenuItem>
@@ -68,11 +88,19 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </MenuItem>
         </SubMenu>
 
-        <SubMenu key="6" title="Sales" icon={<FiUsers />}>
+        <SubMenu key="6" title="Sales" icon={<FiTrendingUp />}>
           <MenuItem onClick={() => goto("/add_sale")}>Add Sale</MenuItem>
           <MenuItem onClick={() => goto("/sales_list")}>Sales List</MenuItem>
         </SubMenu>
 
+        <SubMenu key="7" title="Collection" icon={<IoLogoStackoverflow />}>
+          <MenuItem onClick={() => goto("/add_collection")}>
+            Add Collection
+          </MenuItem>
+          <MenuItem onClick={() => goto("/collection_list")}>
+            Collection List
+          </MenuItem>
+        </SubMenu>
         <SubMenu key="7" title="Collection" icon={<FiUsers />}>
           <MenuItem onClick={() => goto("/add_collection")}>
             Add Collection
@@ -82,26 +110,22 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </MenuItem>
         </SubMenu>
 
-        <SubMenu key="8" title="Payment" icon={<FiUsers />}>
+        <SubMenu key="8" title="Payment" icon={<ImStatsBars />}>
           <MenuItem onClick={() => goto("/add_payment")}>Add Payment</MenuItem>
           <MenuItem onClick={() => goto("/payment_list")}>
             Payment List
           </MenuItem>
         </SubMenu>
 
-        <SubMenu key="9" title="SalesReturn" icon={<FiUsers />}>
-          <MenuItem onClick={() => goto("/add_purchases")}>
-            Add Purchases
-          </MenuItem>
-        </SubMenu>
+        <MenuItem onClick={() => goto("/sales")} key="9" icon={<GiArrowDunk />}>
+          SalesReturn
+        </MenuItem>
 
-        <SubMenu key="10" title="StockMatching" icon={<FiUsers />}>
-          <MenuItem onClick={() => goto("/add_purchases")}>
-            Add Purchases
-          </MenuItem>
-        </SubMenu>
+        <MenuItem onClick={() => goto("/sales")} key="10" icon={<MdAnchor />}>
+          StockMatching
+        </MenuItem>
 
-        <SubMenu key="11" title="HRManagement" icon={<FiUsers />}>
+        <SubMenu key="11" title="HRManagement" icon={<SiDraugiemdotlv />}>
           <MenuItem onClick={() => goto("/employee_type")}>
             Employee Type
           </MenuItem>
@@ -114,7 +138,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </MenuItem>
         </SubMenu>
 
-        <SubMenu key="12" title="Account" icon={<FiUsers />}>
+        <SubMenu key="12" title="Account" icon={<AiFillDollarCircle />}>
           <MenuItem onClick={() => goto("/expense_list")}>
             Expense List{" "}
           </MenuItem>
@@ -132,7 +156,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </MenuItem>
         </SubMenu>
 
-        <SubMenu key="13" title="Report" icon={<FiUsers />}>
+        <SubMenu key="13" title="Report" icon={<AiTwotoneContainer />}>
           <MenuItem onClick={() => goto("/cash_statement_report")}>
             Cash Statement Report
           </MenuItem>
@@ -204,7 +228,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </MenuItem>
         </SubMenu>
 
-        <SubMenu key="14" title="Setting" icon={<FiUsers />}>
+        <SubMenu key="14" title="Setting" icon={<FiTool />}>
           <MenuItem onClick={() => goto("/generic_list")}>
             Generic List
           </MenuItem>
@@ -231,14 +255,6 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </MenuItem>
           <MenuItem onClick={() => goto("/commit_test")}>Commit Test</MenuItem>
         </SubMenu>
-
-        <MenuItem
-          onClick={() => goto("/sales")}
-          key="15"
-          icon={<FiTrendingUp />}
-        >
-          Sales
-        </MenuItem>
       </Menu>
     </div>
   );
