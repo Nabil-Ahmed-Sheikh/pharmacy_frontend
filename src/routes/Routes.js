@@ -3,7 +3,6 @@ import { Route, Switch, useLocation } from "react-router-dom";
 import HomeScreen from "../screens/HomeScreen";
 import UserRoutes from "./UserRoutes";
 import UserDashBoard from "../components/Dashboard/UserDashBoard";
-import NotFoundScreen from "../screens/NotFoundScreen";
 
 const Routes = (props) => {
   useEffect(() => {

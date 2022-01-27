@@ -1,6 +1,62 @@
 .loginForm {
-    height: 200px;
-    width: 300px;
+    height: 400px;
+    width: 800px;
     margin: auto;
     margin-top: 50px;
+    display: flex;
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 0;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 15%);
+    position: relative;
+    border: 0;
+}
+
+.login-form-auth-div {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    text-align: center;
+}
+
+.login-form-img-div {
+    width: 40%;
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.login-form-img-div>h1{
+    font-weight: 600;
+    font-size: 32px;
+    color: white;
+}
+
+.login-form-img-div>p{
+    font-weight: 600;
+    color: white;
+}
+
+.login-button {
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 16px !important;
+}
+
+@media only screen and (max-width: 1024px) {
+    .login-form-img-div {
+        display: none;
+    }
+    .login-form-auth-div {
+        width: 100%;
+    }
+    .loginForm {        
+        width: 400px;
+        height: 350px;
+    }
 }

@@ -1,0 +1,13 @@
+.add-userType-form {
+    width: 600px;
+}
+
+.add-userType-form-crudGroup {
+    width: 100%;
+    margin-left: 20px !important;
+}
+
+.add-userType-form-crudGroup_single {
+    width: 100%;
+    margin-left: 20px;
+}
