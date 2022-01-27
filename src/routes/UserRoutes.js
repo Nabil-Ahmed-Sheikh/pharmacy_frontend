@@ -1,17 +1,14 @@
 import React, { lazy, useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const UserRoutes = ({ component: Component, ...rest }) => {
-  // let authFlag = false;
-  // if (
-  //   rest.auth &&
-  //   rest.auth.isAuthenticated &&
-  //   rest.auth.user &&
-  //   rest.auth.user.userType === "USER"
-  // ) {
-  //   authFlag = true;
-  // }
-  const authFlag = true;
+  const { userLogin } = useSelector((state) => state);
+
+  let authFlag = false;
+  if (userLogin?.userInfo?.success && userLogin?.userInfo?.user) {
+    authFlag = true;
+  }
   return (
     <>
       <Route
