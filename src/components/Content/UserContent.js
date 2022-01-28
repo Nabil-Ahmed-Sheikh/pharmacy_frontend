@@ -2,8 +2,8 @@ import React from "react";
 import "./Content.css";
 import { Route, Switch } from "react-router-dom";
 
-import UserTypes from "../HRAdmin/UserTypes";
-import Users from "../HRAdmin/Users";
+import UserTypes from "../HRAdmin/UsersType/UserTypes";
+import Users from "../HRAdmin/User/Users";
 
 import CustomerList from "../Contact/CustomerList";
 import SupplierList from "../Contact/SupplierList";

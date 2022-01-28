@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "antd";
-import AddUserTypeModal from "../Modal/AddUserTypeModal/AddUserTypeModal";
+import AddUserTypeModal from "../../Modal/AddUserTypeModal/AddUserTypeModal";
 
 const UserTypes = () => {
   const [isVisible, setIsVisible] = useState(false);
