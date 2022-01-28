@@ -39,153 +39,153 @@ const AddUserTypeForm = ({
       <Checkbox>All Permission</Checkbox>
       <Divider />
       <>
-        <Checkbox name="hrAdmin">HR Admin</Checkbox>
+        <Checkbox name="hrAdmin" value={formData.permissions.hrAdmin}>HR Admin</Checkbox>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox value="hrAdmin.users">Users</Checkbox>
+              <Checkbox name="hrAdmin.users" value={formData.permissions.hrAdmin.users}>Users</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="hrAdmin.users.read">List</Checkbox>
+              <Checkbox name="hrAdmin.users.read" value={formData.permissions.hrAdmin.users.read}>View</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="hrAdmin.users.create">Add</Checkbox>
+              <Checkbox name="hrAdmin.users.create" value={formData.permissions.hrAdmin.users.create}>Add</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="hrAdmin.users.update">Edit</Checkbox>
+              <Checkbox name="hrAdmin.users.update"  value={formData.permissions.hrAdmin.users.update}>Edit</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="hrAdmin.users.delete">Delete</Checkbox>
+              <Checkbox name="hrAdmin.users.delete" value={formData.permissions.hrAdmin.users.delete}>Delete</Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox value="A">User Type</Checkbox>
+              <Checkbox name="hrAdmin.userTypes" value={formData.permissions.hrAdmin.userTypes}>User Type</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox name="hrAdmin.userTypes.read" value={formData.permissions.hrAdmin.userTypes.read}>View</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="C">Add</Checkbox>
+              <Checkbox name="hrAdmin.userTypes.create" value={formData.permissions.hrAdmin.userTypes.create}>Add</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="D">Edit</Checkbox>
+              <Checkbox name="hrAdmin.userTypes.update" value={formData.permissions.hrAdmin.userTypes.update}>Edit</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="E">Delete</Checkbox>
-            </Col>
-          </Row>
-        </Checkbox.Group>
-      </>
-      <Divider />
-      <>
-        <Checkbox>Contact</Checkbox>
-        <Checkbox.Group className="add-userType-form-crudGroup">
-          <Row>
-            <Col span={8}>
-              <Checkbox value="A">Customer</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox value="C">Add</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox value="D">Edit</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox value="E">Delete</Checkbox>
-            </Col>
-          </Row>
-        </Checkbox.Group>
-        <Checkbox.Group className="add-userType-form-crudGroup">
-          <Row>
-            <Col span={8}>
-              <Checkbox value="A">Suppliers</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox value="C">Add</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox value="D">Edit</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox value="E">Delete</Checkbox>
+              <Checkbox name="hrAdmin.userTypes.delete" value={formData.permissions.hrAdmin.userTypes.delete}>Delete</Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
       </>
       <Divider />
       <>
-        <Checkbox>Medicine</Checkbox>
+        <Checkbox name="contact" value={formData.permissions.contact}>Contact</Checkbox>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox value="A">Medicine List</Checkbox>
+              <Checkbox name="contact.customers" value={formData.permissions.contact.customers}>Customer</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox name="contact.customers.read" value={formData.permissions.contact.customers.read}>View</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="C">Add</Checkbox>
+              <Checkbox name="contact.customers.create" value={formData.permissions.contact.customers.create}>Add</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="D">Edit</Checkbox>
+              <Checkbox name="contact.customers.update" value={formData.permissions.contact.customers.update}>Edit</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="E">Delete</Checkbox>
+              <Checkbox name="contact.customers.delete" value={formData.permissions.contact.customers.delete}>Delete</Checkbox>
+            </Col>
+          </Row>
+        </Checkbox.Group>
+        <Checkbox.Group className="add-userType-form-crudGroup">
+          <Row>
+            <Col span={8}>
+              <Checkbox name="contact.suppliers" value={formData.permissions.contact.suppliers}>Suppliers</Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox name="contact.suppliers.read" value={formData.permissions.contact.suppliers.read}>View</Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox name="contact.suppliers.create" value={formData.permissions.contact.suppliers.create}>Add</Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox name="contact.suppliers.update" value={formData.permissions.contact.suppliers.update}>Edit</Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox name="contact.suppliers.delete" value={formData.permissions.contact.suppliers.delete}>Delete</Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
       </>
       <Divider />
       <>
-        <Checkbox>Purchases</Checkbox>
+        <Checkbox name="medicine" value={formData.permissions.medicine}>Medicine</Checkbox>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox value="A">Purchases List</Checkbox>
+              <Checkbox name="medicine.medicineList" value={formData.permissions.medicine.medicineList}>Medicine View</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox name="medicine.medicineList.read" value={formData.permissions.medicine.medicineList.read}>View</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="C">Add</Checkbox>
+              <Checkbox name="medicine.medicineList.create" value={formData.permissions.medicine.medicineList.create}>Add</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="D">Edit</Checkbox>
+              <Checkbox name="medicine.medicineList.update" value={formData.permissions.medicine.medicineList.update}>Edit</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="E">Delete</Checkbox>
+              <Checkbox name="medicine.medicineList.delete" value={formData.permissions.medicine.medicineList.delete}>Delete</Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
       </>
       <Divider />
       <>
-        <Checkbox>Sales</Checkbox>
+        <Checkbox name="purchases" value={formData.permissions.purchases}>Purchases</Checkbox>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox value="A">Sales List</Checkbox>
+              <Checkbox name="purchases.purchases.purchasesList" value={formData.permissions.purchases.purchases.purchasesList}>Purchases View</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox name="purchases.purchases.purchasesList.read" value={formData.permissions.purchases.purchases.purchasesList.read}>View</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="C">Add</Checkbox>
+              <Checkbox name="purchases.purchases.purchasesList.create" value={formData.permissions.purchases.purchases.purchasesList.create}>Add</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="D">Edit</Checkbox>
+              <Checkbox name="purchases.purchases.purchasesList.update" value={formData.permissions.purchases.purchases.purchasesList.update}>Edit</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="E">Delete</Checkbox>
+              <Checkbox name="purchases.purchases.purchasesList.delete" value={formData.permissions.purchases.purchases.purchasesList.delete}>Delete</Checkbox>
+            </Col>
+          </Row>
+        </Checkbox.Group>
+      </>
+      <Divider />
+      <>
+        <Checkbox name="sales" value={formData.permissions.sales}>Sales</Checkbox>
+        <Checkbox.Group className="add-userType-form-crudGroup">
+          <Row>
+            <Col span={8}>
+              <Checkbox name="sales.salesList" value={formData.permissions.sales.salesList}>Sales View</Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox name="sales.salesList.read" value={formData.permissions.sales.salesList.read}>View</Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox name="sales.salesList.create" value={formData.permissions.sales.salesList.create}>Add</Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox name="sales.salesList.update" value={formData.permissions.sales.salesList.update}>Edit</Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox name="sales.salesList.delete" value={formData.permissions.sales.salesList.delete}>Delete</Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
@@ -198,7 +198,7 @@ const AddUserTypeForm = ({
               <Checkbox value="A">Collection</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox value="B">View</Checkbox>
             </Col>
             <Col span={4}>
               <Checkbox value="C">Add</Checkbox>
@@ -214,42 +214,42 @@ const AddUserTypeForm = ({
         <Checkbox.Group className="add-userType-form-crudGroup_single">
           <Row>
             <Col span={8}>
-              <Checkbox value="A">Payment</Checkbox>
+              <Checkbox name="payment" value={formData.permissions.payment}>Payment</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox name="payment.read" value={formData.permissions.payment.read}>View</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="C">Add</Checkbox>
+              <Checkbox name="payment.create" value={formData.permissions.payment.create}>Add</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="D">Edit</Checkbox>
+              <Checkbox name="payment.update" value={formData.permissions.payment.update}>Edit</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="E">Delete</Checkbox>
+              <Checkbox name="payment.delete" value={formData.permissions.payment.delete}>Delete</Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
       </>
       <Divider />
       <>
-        <Checkbox>HR Management</Checkbox>
+        <Checkbox name="hrManagement" value={formData.permissions.hrManagement}>HR Management</Checkbox>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox value="A">Employee Type</Checkbox>
+              <Checkbox name="hrManagement.employeeType" value={formData.permissions.hrManagement.employeeType}>Employee Type</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox name="hrManagement.employeeType.read" value={formData.permissions.hrManagement.employeeType.read}>View</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="C">Add</Checkbox>
+              <Checkbox name="hrManagement.employeeType.create" value={formData.permissions.hrManagement.employeeType.create}>Add</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="D">Edit</Checkbox>
+              <Checkbox name="hrManagement.employeeType.update" value={formData.permissions.hrManagement.employeeType.update}>Edit</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="E">Delete</Checkbox>
+              <Checkbox name="hrManagement.employeeType.delete" value={formData.permissions.hrManagement.employeeType.delete}>Delete</Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
@@ -259,7 +259,7 @@ const AddUserTypeForm = ({
               <Checkbox value="A">Designation</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox value="B">View</Checkbox>
             </Col>
             <Col span={4}>
               <Checkbox value="C">Add</Checkbox>
@@ -275,10 +275,10 @@ const AddUserTypeForm = ({
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox value="A">Employee List</Checkbox>
+              <Checkbox value="A">Employee View</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox value="B">View</Checkbox>
             </Col>
             <Col span={4}>
               <Checkbox value="C">Add</Checkbox>
@@ -297,7 +297,7 @@ const AddUserTypeForm = ({
               <Checkbox value="A">Monthly Salary</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox value="B">View</Checkbox>
             </Col>
             <Col span={4}>
               <Checkbox value="C">Add</Checkbox>
@@ -320,7 +320,7 @@ const AddUserTypeForm = ({
               <Checkbox value="A">Journal</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox value="B">View</Checkbox>
             </Col>
             <Col span={4}>
               <Checkbox value="C">Add</Checkbox>
@@ -339,7 +339,7 @@ const AddUserTypeForm = ({
               <Checkbox value="A">Account Head</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox value="B">View</Checkbox>
             </Col>
             <Col span={4}>
               <Checkbox value="C">Add</Checkbox>
@@ -358,7 +358,7 @@ const AddUserTypeForm = ({
               <Checkbox value="A">Sub Head</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox value="B">View</Checkbox>
             </Col>
             <Col span={4}>
               <Checkbox value="C">Add</Checkbox>
@@ -377,7 +377,7 @@ const AddUserTypeForm = ({
               <Checkbox value="A">Bank Setup</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox value="B">View</Checkbox>
             </Col>
             <Col span={4}>
               <Checkbox value="C">Add</Checkbox>
@@ -396,7 +396,7 @@ const AddUserTypeForm = ({
               <Checkbox value="A">Expense</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox value="B">View</Checkbox>
             </Col>
             <Col span={4}>
               <Checkbox value="C">Add</Checkbox>
@@ -415,7 +415,7 @@ const AddUserTypeForm = ({
               <Checkbox value="A">Others Income</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox value="B">View</Checkbox>
             </Col>
             <Col span={4}>
               <Checkbox value="C">Add</Checkbox>
@@ -434,7 +434,7 @@ const AddUserTypeForm = ({
               <Checkbox value="A">Bank Deposit</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox value="B">View</Checkbox>
             </Col>
             <Col span={4}>
               <Checkbox value="C">Add</Checkbox>
@@ -453,7 +453,7 @@ const AddUserTypeForm = ({
               <Checkbox value="A">Bank Withdraw</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox value="B">View</Checkbox>
             </Col>
             <Col span={4}>
               <Checkbox value="C">Add</Checkbox>
@@ -472,7 +472,7 @@ const AddUserTypeForm = ({
               <Checkbox value="A">Bank Transfer</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox value="B">View</Checkbox>
             </Col>
             <Col span={4}>
               <Checkbox value="C">Add</Checkbox>
@@ -494,7 +494,7 @@ const AddUserTypeForm = ({
               <Checkbox value="A">Company Setup</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox value="B">View</Checkbox>
             </Col>
             <Col span={4}>
               <Checkbox value="C">Add</Checkbox>
@@ -573,7 +573,7 @@ const AddUserTypeForm = ({
               <Checkbox value="A">User Type</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">List</Checkbox>
+              <Checkbox value="B">View</Checkbox>
             </Col>
             <Col span={4}>
               <Checkbox value="C">Add</Checkbox>
