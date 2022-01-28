@@ -150,19 +150,19 @@ const AddUserTypeForm = ({
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox name="purchases.purchases.purchasesList" value={formData.permissions.purchases.purchases.purchasesList}>Purchases View</Checkbox>
+              <Checkbox name="purchases.purchasesList" value={formData.permissions.purchases.purchasesList}>Purchases View</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="purchases.purchases.purchasesList.read" value={formData.permissions.purchases.purchases.purchasesList.read}>View</Checkbox>
+              <Checkbox name="purchases.purchasesList.read" value={formData.permissions.purchases.purchasesList.read}>View</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="purchases.purchases.purchasesList.create" value={formData.permissions.purchases.purchases.purchasesList.create}>Add</Checkbox>
+              <Checkbox name="purchases.purchasesList.create" value={formData.permissions.purchases.purchasesList.create}>Add</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="purchases.purchases.purchasesList.update" value={formData.permissions.purchases.purchases.purchasesList.update}>Edit</Checkbox>
+              <Checkbox name="purchases.purchasesList.update" value={formData.permissions.purchases.purchasesList.update}>Edit</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="purchases.purchases.purchasesList.delete" value={formData.permissions.purchases.purchases.purchasesList.delete}>Delete</Checkbox>
+              <Checkbox name="purchases.purchasesList.delete" value={formData.permissions.purchases.purchasesList.delete}>Delete</Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
@@ -313,42 +313,42 @@ const AddUserTypeForm = ({
       </>
       <Divider />
       <>
-        <Checkbox>Account</Checkbox>
+        <Checkbox name="account" value={formData.permissions.account}>Account</Checkbox>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox value="A">Journal</Checkbox>
+              <Checkbox name="account.journal" value={formData.permissions.account.journal}>Journal</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">View</Checkbox>
+              <Checkbox name="account.journal.read" value={formData.permissions.account.journal.read}>View</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="C">Add</Checkbox>
+              <Checkbox name="account.journal.create" value={formData.permissions.account.journal.create}>Add</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="D">Edit</Checkbox>
+              <Checkbox name="account.journal.update" value={formData.permissions.account.journal.update}>Edit</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="E">Delete</Checkbox>
+              <Checkbox name="account.journal.delete" value={formData.permissions.account.journal.delete}>Delete</Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox value="A">Account Head</Checkbox>
+              <Checkbox name="account.accountHead" value={formData.permissions.account.accountHead}>Account Head</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">View</Checkbox>
+              <Checkbox name="account.accountHead.read" value={formData.permissions.account.accountHead.read}>View</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="C">Add</Checkbox>
+              <Checkbox name="account.accountHead.create" value={formData.permissions.account.accountHead.create}>Add</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="D">Edit</Checkbox>
+              <Checkbox name="account.accountHead.update" value={formData.permissions.account.accountHead.update}>Edit</Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="E">Delete</Checkbox>
+              <Checkbox name="account.accountHead.delete" value={formData.permissions.account.accountHead.delete}>Delete</Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
