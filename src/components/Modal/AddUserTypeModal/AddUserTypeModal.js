@@ -1,9 +1,14 @@
-import React, { useState } from "react";
-import { Modal, Button } from "antd";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Modal, Button, Spin } from "antd";
 import "./AddUserTypeModal.css";
 import AddUserTypeForm from "../../Form/AddUserTypeForm/AddUserTypeForm";
+import adminPermissions from "./utils/adminPermissionTemplate";
+import { addUserType } from "../../../redux/actions/hrAdminActions";
 
-const AddUserTypeModal = ({ isVisible, setIsVisible }) => {
+const AddUserTypeModal = ({ isVisible, setIsVisible, loading, message }) => {
+  const dispatch = useDispatch();
+
   let crud = {
     active: false,
     create: false,
@@ -48,6 +53,9 @@ const AddUserTypeModal = ({ isVisible, setIsVisible }) => {
       salesList: {
         ...crud,
       },
+    },
+    collection: {
+      ...crud,
     },
     payment: {
       ...crud,
@@ -137,15 +145,15 @@ const AddUserTypeModal = ({ isVisible, setIsVisible }) => {
   };
 
   const [formData, setFormData] = useState({
-    userType: "",
-    status: false,
+    name: "",
+    status: "INACTIVE",
     permissions: {
       ...permissions,
     },
   });
 
   const handleChangeUserType = (e) => {
-    setFormData((prev) => ({ ...prev, userType: e.target.value }));
+    setFormData((prev) => ({ ...prev, name: e.target.value }));
   };
 
   const handleChangeStatus = (value) => {
@@ -157,11 +165,81 @@ const AddUserTypeModal = ({ isVisible, setIsVisible }) => {
   };
 
   const handleCheck = (e) => {
-    console.log(e.target.name);
+    let permission = e.target.value.split(".");
+
+    if (permission.length === 1) {
+      let key = permission[0];
+
+      let obj = { ...formData.permissions };
+      obj[key].active = e.target.checked;
+
+      setFormData((prev) => ({
+        ...prev,
+        permissions: {
+          ...obj,
+        },
+      }));
+    } else if (permission.length === 2) {
+      if (
+        permission[0] === "report" ||
+        permission[0] === "dashboard" ||
+        permission[0] === "companySetup" ||
+        permission[0] === "collection" ||
+        permission[0] === "payment"
+      ) {
+        let key1 = permission[0];
+        let key2 = permission[1];
+        let obj = { ...formData.permissions };
+        obj[key1][key2] = e.target.checked;
+
+        setFormData((prev) => ({
+          ...prev,
+          permissions: {
+            ...obj,
+          },
+        }));
+      } else {
+        let key1 = permission[0];
+        let key2 = permission[1];
+        let obj = { ...formData.permissions };
+        obj[key1][key2].active = e.target.checked;
+
+        setFormData((prev) => ({
+          ...prev,
+          permissions: {
+            ...obj,
+          },
+        }));
+      }
+    } else if (permission.length === 3) {
+      let key1 = permission[0];
+      let key2 = permission[1];
+      let key3 = permission[2];
+      let obj = { ...formData.permissions };
+      obj[key1][key2][key3] = e.target.checked;
+
+      setFormData((prev) => ({
+        ...prev,
+        permissions: {
+          ...obj,
+        },
+      }));
+    }
   };
 
-  const handleSubmit = () => {
-    console.log(formData);
+  const handleCheckAllPermission = (e) => {
+    if (e.target.checked) {
+      setFormData((prev) => ({
+        ...prev,
+        permissions: { ...adminPermissions },
+      }));
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addUserType(formData));
+    setIsVisible(false);
   };
 
   return (
@@ -172,10 +250,16 @@ const AddUserTypeModal = ({ isVisible, setIsVisible }) => {
       visible={isVisible}
       footer={[
         <Button key="back" onClick={handleCancel}>
-          Return
+          Cancel
         </Button>,
-        <Button key="submit" type="primary" onClick={handleSubmit}>
-          Submit
+        <Button
+          key="submit"
+          type="primary"
+          onClick={handleSubmit}
+          disabled={loading}
+          style={{ width: "76px" }}
+        >
+          {loading ? <Spin /> : "Submit"}
         </Button>,
       ]}
     >
@@ -183,6 +267,9 @@ const AddUserTypeModal = ({ isVisible, setIsVisible }) => {
         handleChangeUserType={handleChangeUserType}
         handleChangeStatus={handleChangeStatus}
         formData={formData}
+        handleCheck={handleCheck}
+        handleCheckAllPermission={handleCheckAllPermission}
+        loading={loading}
       />
     </Modal>
   );

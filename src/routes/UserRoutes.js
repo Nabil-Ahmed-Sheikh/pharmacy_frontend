@@ -3,10 +3,11 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const UserRoutes = ({ component: Component, ...rest }) => {
-  const { userLogin } = useSelector((state) => state);
+  //const { userLogin } = useSelector((state) => state);
 
   let authFlag = false;
-  if (userLogin?.userInfo?.success && userLogin?.userInfo?.user) {
+  let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  if (userInfo?.success && userInfo?.user) {
     authFlag = true;
   }
   return (
@@ -17,7 +18,9 @@ const UserRoutes = ({ component: Component, ...rest }) => {
           authFlag ? (
             <Component {...props} />
           ) : (
-            <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+            <Redirect
+              to={{ pathname: "/login", state: { from: props.location } }}
+            />
           )
         }
       />

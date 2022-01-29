@@ -9,7 +9,11 @@ const AddUserTypeForm = ({
   handleChangeUserType,
   handleChangeStatus,
   formData,
+  handleCheck,
+  handleCheckAllPermission,
 }) => {
+  const { permissions } = formData;
+
   return (
     <div className="add-userType-form">
       <div>
@@ -18,7 +22,7 @@ const AddUserTypeForm = ({
         </label>
         <Input
           addonBefore={<FiUser />}
-          name="userType"
+          name="name"
           onChange={handleChangeUserType}
         />
       </div>
@@ -31,457 +35,422 @@ const AddUserTypeForm = ({
           onChange={handleChangeStatus}
           value={formData.status}
         >
-          <Option value={true}>Active</Option>
-          <Option value={false}>Inactive</Option>
+          <Option value={"ACTIVE"}>Active</Option>
+          <Option value={"INACTIVE"}>Inactive</Option>
         </Select>
       </div>
       <Divider />
-      <Checkbox>All Permission</Checkbox>
+      <Checkbox onChange={handleCheckAllPermission}>All Permission</Checkbox>
       <Divider />
       <>
-        <Checkbox name="hrAdmin" value={formData.permissions.hrAdmin}>HR Admin</Checkbox>
+        <Checkbox
+          value="hrAdmin"
+          key={"hrAdmin"}
+          onChange={handleCheck}
+          checked={permissions.hrAdmin.active ? true : false}
+        >
+          HR Admin
+        </Checkbox>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox name="hrAdmin.users" value={formData.permissions.hrAdmin.users}>Users</Checkbox>
+              <Checkbox
+                value="hrAdmin.users"
+                key={"hrAdmin.users"}
+                onChange={handleCheck}
+                checked={permissions.hrAdmin.users.active ? true : false}
+              >
+                Users
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="hrAdmin.users.read" value={formData.permissions.hrAdmin.users.read}>View</Checkbox>
+              <Checkbox
+                value="hrAdmin.users.read"
+                key={"hrAdmin.users.read"}
+                onChange={handleCheck}
+                checked={permissions.hrAdmin.users.read ? true : false}
+              >
+                View
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="hrAdmin.users.create" value={formData.permissions.hrAdmin.users.create}>Add</Checkbox>
+              <Checkbox
+                value="hrAdmin.users.create"
+                onChange={handleCheck}
+                checked={permissions.hrAdmin.users.create ? true : false}
+              >
+                Add
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="hrAdmin.users.update"  value={formData.permissions.hrAdmin.users.update}>Edit</Checkbox>
+              <Checkbox
+                value="hrAdmin.users.update"
+                onChange={handleCheck}
+                checked={permissions.hrAdmin.users.update ? true : false}
+              >
+                Edit
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="hrAdmin.users.delete" value={formData.permissions.hrAdmin.users.delete}>Delete</Checkbox>
+              <Checkbox
+                value="hrAdmin.users.delete"
+                onChange={handleCheck}
+                checked={permissions.hrAdmin.users.delete ? true : false}
+              >
+                Delete
+              </Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox name="hrAdmin.userTypes" value={formData.permissions.hrAdmin.userTypes}>User Type</Checkbox>
+              <Checkbox
+                value="hrAdmin.userTypes"
+                onChange={handleCheck}
+                checked={permissions.hrAdmin.userTypes.active ? true : false}
+              >
+                User Type
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="hrAdmin.userTypes.read" value={formData.permissions.hrAdmin.userTypes.read}>View</Checkbox>
+              <Checkbox
+                value="hrAdmin.userTypes.read"
+                onChange={handleCheck}
+                checked={permissions.hrAdmin.userTypes.read ? true : false}
+              >
+                View
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="hrAdmin.userTypes.create" value={formData.permissions.hrAdmin.userTypes.create}>Add</Checkbox>
+              <Checkbox
+                value="hrAdmin.userTypes.create"
+                onChange={handleCheck}
+                checked={permissions.hrAdmin.userTypes.create ? true : false}
+              >
+                Add
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="hrAdmin.userTypes.update" value={formData.permissions.hrAdmin.userTypes.update}>Edit</Checkbox>
+              <Checkbox
+                value="hrAdmin.userTypes.update"
+                onChange={handleCheck}
+                checked={permissions.hrAdmin.userTypes.update ? true : false}
+              >
+                Edit
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="hrAdmin.userTypes.delete" value={formData.permissions.hrAdmin.userTypes.delete}>Delete</Checkbox>
+              <Checkbox
+                value="hrAdmin.userTypes.delete"
+                onChange={handleCheck}
+                checked={permissions.hrAdmin.userTypes.delete ? true : false}
+              >
+                Delete
+              </Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
       </>
       <Divider />
       <>
-        <Checkbox name="contact" value={formData.permissions.contact}>Contact</Checkbox>
+        <Checkbox
+          value="contact"
+          onChange={handleCheck}
+          checked={permissions.contact.active ? true : false}
+        >
+          Contact
+        </Checkbox>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox name="contact.customers" value={formData.permissions.contact.customers}>Customer</Checkbox>
+              <Checkbox
+                value="contact.customers"
+                onChange={handleCheck}
+                checked={permissions.contact.customers.active ? true : false}
+              >
+                Customer
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="contact.customers.read" value={formData.permissions.contact.customers.read}>View</Checkbox>
+              <Checkbox
+                value="contact.customers.read"
+                onChange={handleCheck}
+                checked={permissions.contact.customers.read ? true : false}
+              >
+                View
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="contact.customers.create" value={formData.permissions.contact.customers.create}>Add</Checkbox>
+              <Checkbox
+                value="contact.customers.create"
+                onChange={handleCheck}
+                checked={permissions.contact.customers.create ? true : false}
+              >
+                Add
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="contact.customers.update" value={formData.permissions.contact.customers.update}>Edit</Checkbox>
+              <Checkbox
+                value="contact.customers.update"
+                onChange={handleCheck}
+                checked={permissions.contact.customers.update ? true : false}
+              >
+                Edit
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="contact.customers.delete" value={formData.permissions.contact.customers.delete}>Delete</Checkbox>
+              <Checkbox
+                value="contact.customers.delete"
+                onChange={handleCheck}
+                checked={permissions.contact.customers.delete ? true : false}
+              >
+                Delete
+              </Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox name="contact.suppliers" value={formData.permissions.contact.suppliers}>Suppliers</Checkbox>
+              <Checkbox
+                value="contact.suppliers"
+                onChange={handleCheck}
+                checked={permissions.contact.suppliers.active ? true : false}
+              >
+                Suppliers
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="contact.suppliers.read" value={formData.permissions.contact.suppliers.read}>View</Checkbox>
+              <Checkbox
+                value="contact.suppliers.read"
+                onChange={handleCheck}
+                checked={permissions.contact.suppliers.read ? true : false}
+              >
+                View
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="contact.suppliers.create" value={formData.permissions.contact.suppliers.create}>Add</Checkbox>
+              <Checkbox
+                value="contact.suppliers.create"
+                onChange={handleCheck}
+                checked={permissions.contact.suppliers.create ? true : false}
+              >
+                Add
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="contact.suppliers.update" value={formData.permissions.contact.suppliers.update}>Edit</Checkbox>
+              <Checkbox
+                value="contact.suppliers.update"
+                onChange={handleCheck}
+                checked={permissions.contact.suppliers.update ? true : false}
+              >
+                Edit
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="contact.suppliers.delete" value={formData.permissions.contact.suppliers.delete}>Delete</Checkbox>
+              <Checkbox
+                value="contact.suppliers.delete"
+                onChange={handleCheck}
+                checked={permissions.contact.suppliers.delete ? true : false}
+              >
+                Delete
+              </Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
       </>
       <Divider />
       <>
-        <Checkbox name="medicine" value={formData.permissions.medicine}>Medicine</Checkbox>
+        <Checkbox
+          value="medicine"
+          onChange={handleCheck}
+          checked={permissions.medicine.active ? true : false}
+        >
+          Medicine
+        </Checkbox>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox name="medicine.medicineList" value={formData.permissions.medicine.medicineList}>Medicine View</Checkbox>
+              <Checkbox
+                value="medicine.medicineList"
+                onChange={handleCheck}
+                checked={
+                  permissions.medicine.medicineList.active ? true : false
+                }
+              >
+                Medicine View
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="medicine.medicineList.read" value={formData.permissions.medicine.medicineList.read}>View</Checkbox>
+              <Checkbox
+                value="medicine.medicineList.read"
+                onChange={handleCheck}
+                checked={permissions.medicine.medicineList.read ? true : false}
+              >
+                View
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="medicine.medicineList.create" value={formData.permissions.medicine.medicineList.create}>Add</Checkbox>
+              <Checkbox
+                value="medicine.medicineList.create"
+                onChange={handleCheck}
+                checked={
+                  permissions.medicine.medicineList.create ? true : false
+                }
+              >
+                Add
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="medicine.medicineList.update" value={formData.permissions.medicine.medicineList.update}>Edit</Checkbox>
+              <Checkbox
+                value="medicine.medicineList.update"
+                onChange={handleCheck}
+                checked={
+                  permissions.medicine.medicineList.update ? true : false
+                }
+              >
+                Edit
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="medicine.medicineList.delete" value={formData.permissions.medicine.medicineList.delete}>Delete</Checkbox>
+              <Checkbox
+                value="medicine.medicineList.delete"
+                onChange={handleCheck}
+                checked={
+                  permissions.medicine.medicineList.delete ? true : false
+                }
+              >
+                Delete
+              </Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
       </>
       <Divider />
       <>
-        <Checkbox name="purchases" value={formData.permissions.purchases}>Purchases</Checkbox>
+        <Checkbox
+          value="purchases"
+          onChange={handleCheck}
+          checked={permissions.purchases.active ? true : false}
+        >
+          Purchases
+        </Checkbox>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox name="purchases.purchasesList" value={formData.permissions.purchases.purchasesList}>Purchases List</Checkbox>
+              <Checkbox
+                value="purchases.purchasesList"
+                onChange={handleCheck}
+                checked={
+                  permissions.purchases.purchasesList.active ? true : false
+                }
+              >
+                Purchases List
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="purchases.purchasesList.read" value={formData.permissions.purchases.purchasesList.read}>View</Checkbox>
+              <Checkbox
+                value="purchases.purchasesList.read"
+                onChange={handleCheck}
+                checked={
+                  permissions.purchases.purchasesList.read ? true : false
+                }
+              >
+                View
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="purchases.purchasesList.create" value={formData.permissions.purchases.purchasesList.create}>Add</Checkbox>
+              <Checkbox
+                value="purchases.purchasesList.create"
+                onChange={handleCheck}
+                checked={
+                  permissions.purchases.purchasesList.create ? true : false
+                }
+              >
+                Add
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="purchases.purchasesList.update" value={formData.permissions.purchases.purchasesList.update}>Edit</Checkbox>
+              <Checkbox
+                value="purchases.purchasesList.update"
+                onChange={handleCheck}
+                checked={
+                  permissions.purchases.purchasesList.update ? true : false
+                }
+              >
+                Edit
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="purchases.purchasesList.delete" value={formData.permissions.purchases.purchasesList.delete}>Delete</Checkbox>
+              <Checkbox
+                value="purchases.purchasesList.delete"
+                onChange={handleCheck}
+                checked={
+                  permissions.purchases.purchasesList.delete ? true : false
+                }
+              >
+                Delete
+              </Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
       </>
       <Divider />
       <>
-        <Checkbox name="sales" value={formData.permissions.sales}>Sales</Checkbox>
+        <Checkbox
+          value="sales"
+          onChange={handleCheck}
+          checked={permissions.sales.active ? true : false}
+        >
+          Sales
+        </Checkbox>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox name="sales.salesList" value={formData.permissions.sales.salesList}>Sales View</Checkbox>
+              <Checkbox
+                value="sales.salesList"
+                onChange={handleCheck}
+                checked={permissions.sales.salesList.active ? true : false}
+              >
+                Sales List
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="sales.salesList.read" value={formData.permissions.sales.salesList.read}>View</Checkbox>
+              <Checkbox
+                value="sales.salesList.read"
+                onChange={handleCheck}
+                checked={permissions.sales.salesList.read ? true : false}
+              >
+                View
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="sales.salesList.create" value={formData.permissions.sales.salesList.create}>Add</Checkbox>
+              <Checkbox
+                value="sales.salesList.create"
+                onChange={handleCheck}
+                checked={permissions.sales.salesList.create ? true : false}
+              >
+                Add
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="sales.salesList.update" value={formData.permissions.sales.salesList.update}>Edit</Checkbox>
+              <Checkbox
+                value="sales.salesList.update"
+                onChange={handleCheck}
+                checked={permissions.sales.salesList.update ? true : false}
+              >
+                Edit
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="sales.salesList.delete" value={formData.permissions.sales.salesList.delete}>Delete</Checkbox>
-            </Col>
-          </Row>
-        </Checkbox.Group>
-      </>
-      <Divider />
-      <>
-        <Checkbox.Group className="add-userType-form-crudGroup_single">
-          <Row>
-            <Col span={8}>
-              <Checkbox value="A">Collection</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox value="B">View</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox value="C">Add</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox value="D">Edit</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox value="E">Delete</Checkbox>
-            </Col>
-          </Row>
-        </Checkbox.Group>
-        <Checkbox.Group className="add-userType-form-crudGroup_single">
-          <Row>
-            <Col span={8}>
-              <Checkbox name="payment" value={formData.permissions.payment}>Payment</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="payment.read" value={formData.permissions.payment.read}>View</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="payment.create" value={formData.permissions.payment.create}>Add</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="payment.update" value={formData.permissions.payment.update}>Edit</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="payment.delete" value={formData.permissions.payment.delete}>Delete</Checkbox>
-            </Col>
-          </Row>
-        </Checkbox.Group>
-      </>
-      <Divider />
-      <>
-        <Checkbox name="hrManagement" value={formData.permissions.hrManagement}>HR Management</Checkbox>
-        <Checkbox.Group className="add-userType-form-crudGroup">
-          <Row>
-            <Col span={8}>
-              <Checkbox name="hrManagement.employeeType" value={formData.permissions.hrManagement.employeeType}>Employee Type</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="hrManagement.employeeType.read" value={formData.permissions.hrManagement.employeeType.read}>View</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="hrManagement.employeeType.create" value={formData.permissions.hrManagement.employeeType.create}>Add</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="hrManagement.employeeType.update" value={formData.permissions.hrManagement.employeeType.update}>Edit</Checkbox>
-            </Col>
-            <Col span={4}> 
-              <Checkbox name="hrManagement.employeeType.delete" value={formData.permissions.hrManagement.employeeType.delete}>Delete</Checkbox>
-            </Col>
-          </Row>
-        </Checkbox.Group>
-        <Checkbox.Group className="add-userType-form-crudGroup">
-          <Row>
-            <Col span={8}>
-              <Checkbox name="hrManagement.designation" value={formData.permissions.hrManagement.designation}>Designation</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="hrManagement.designation.read" value={formData.permissions.hrManagement.designation.read}>View</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="hrManagement.designation.create" value={formData.permissions.hrManagement.designation.create}>Add</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="hrManagement.designation.update" value={formData.permissions.hrManagement.designation.update}>Edit</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="hrManagement.designation.delete" value={formData.permissions.hrManagement.designation.delete}>Delete</Checkbox>
-            </Col>
-          </Row>
-        </Checkbox.Group>
-        <Checkbox.Group className="add-userType-form-crudGroup">
-          <Row>
-            <Col span={8}>
-              <Checkbox name="hrManagement.employeeList" value={formData.permissions.hrManagement.employeeList}>Employee List</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="hrManagement.employeeList.read" value={formData.permissions.hrManagement.employeeList.read}>View</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="hrManagement.employeeList.create" value={formData.permissions.hrManagement.employeeList.create}>Add</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="hrManagement.employeeList.update" value={formData.permissions.hrManagement.employeeList.update}>Edit</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="hrManagement.employeeList.delete" value={formData.permissions.hrManagement.employeeList.delete}>Delete</Checkbox>
-            </Col>
-          </Row>
-        </Checkbox.Group>
-        <Checkbox.Group className="add-userType-form-crudGroup">
-          <Row>
-            <Col span={8}>
-              <Checkbox name="hrManagement.monthlySalary" value={formData.permissions.hrManagement.monthlySalary}>Monthly Salary</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="hrManagement.monthlySalary.read" value={formData.permissions.hrManagement.monthlySalary.read}>View</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="hrManagement.monthlySalary.create" value={formData.permissions.hrManagement.monthlySalary.create}>Add</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="hrManagement.monthlySalary.update" value={formData.permissions.hrManagement.monthlySalary.update}>Edit</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="hrManagement.monthlySalary.delete" value={formData.permissions.hrManagement.monthlySalary.delete}>Delete</Checkbox>
-            </Col>
-          </Row>
-        </Checkbox.Group>
-      </>
-      <Divider />
-      <>
-        <Checkbox name="account" value={formData.permissions.account}>Account</Checkbox>
-        <Checkbox.Group className="add-userType-form-crudGroup">
-          <Row>
-            <Col span={8}>
-              <Checkbox name="account.journal" value={formData.permissions.account.journal}>Journal</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.journal.read" value={formData.permissions.account.journal.read}>View</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.journal.create" value={formData.permissions.account.journal.create}>Add</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.journal.update" value={formData.permissions.account.journal.update}>Edit</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.journal.delete" value={formData.permissions.account.journal.delete}>Delete</Checkbox>
-            </Col>
-          </Row>
-        </Checkbox.Group>
-        <Checkbox.Group className="add-userType-form-crudGroup">
-          <Row>
-            <Col span={8}>
-              <Checkbox name="account.accountHead" value={formData.permissions.account.accountHead}>Account Head</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.accountHead.read" value={formData.permissions.account.accountHead.read}>View</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.accountHead.create" value={formData.permissions.account.accountHead.create}>Add</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.accountHead.update" value={formData.permissions.account.accountHead.update}>Edit</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.accountHead.delete" value={formData.permissions.account.accountHead.delete}>Delete</Checkbox>
-            </Col>
-          </Row>
-        </Checkbox.Group>
-        <Checkbox.Group className="add-userType-form-crudGroup">
-          <Row>
-            <Col span={8}>
-              <Checkbox name="account.subHead" value={formData.permissions.account.subHead}>Sub Head</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.subHead.read" value={formData.permissions.account.subHead}>View</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.subHead.create" value={formData.permissions.account.subHead}>Add</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.subHead.update" value={formData.permissions.account.subHead}>Edit</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.subHead.delete" value={formData.permissions.account.subHead.delete}>Delete</Checkbox>
-            </Col>
-          </Row>
-        </Checkbox.Group>
-        <Checkbox.Group className="add-userType-form-crudGroup">
-          <Row>
-            <Col span={8}>
-              <Checkbox name="account.bankSetup" value={formData.permissions.account.bankSetup}>Bank Setup</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.bankSetup.read" value={formData.permissions.account.bankSetup.read}>View</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.bankSetup.create" value={formData.permissions.account.bankSetup.create}>Add</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.bankSetup.update" value={formData.permissions.account.bankSetup.update}>Edit</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.bankSetup.delete" value={formData.permissions.account.bankSetup.delete}>Delete</Checkbox>
-            </Col>
-          </Row>
-        </Checkbox.Group>
-        <Checkbox.Group className="add-userType-form-crudGroup">
-          <Row>
-            <Col span={8}>
-              <Checkbox name="account.expense" value={formData.permissions.account.expense}>Expense</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.expense.read" value={formData.permissions.account.expense.read}>View</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.expense.create" value={formData.permissions.account.expense.create}>Add</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.expense.update" value={formData.permissions.account.expense.update}>Edit</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.expense.delete" value={formData.permissions.account.expense.delete}>Delete</Checkbox>
-            </Col>
-          </Row>
-        </Checkbox.Group>
-        <Checkbox.Group className="add-userType-form-crudGroup">
-          <Row>
-            <Col span={8}>
-              <Checkbox name="account.otherIncome" value={formData.permissions.account.otherIncome}>Others Income</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.otherIncome.read" value={formData.permissions.account.otherIncome.read}>View</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.otherIncome.create" value={formData.permissions.account.otherIncome.create}>Add</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.otherIncome.update" value={formData.permissions.account.otherIncome.update}>Edit</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.otherIncome.delete" value={formData.permissions.account.otherIncome.delete}>Delete</Checkbox>
-            </Col>
-          </Row>
-        </Checkbox.Group>
-        <Checkbox.Group className="add-userType-form-crudGroup">
-          <Row>
-            <Col span={8}>
-              <Checkbox name="account.bankDeposit" value={formData.permissions.account.bankDeposit}>Bank Deposit</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.bankDeposit.read" value={formData.permissions.account.bankDeposit.read}>View</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.bankDeposit.create" value={formData.permissions.account.bankDeposit.create}>Add</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.bankDeposit.update" value={formData.permissions.account.bankDeposit.update}>Edit</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.bankDeposit.delete" value={formData.permissions.account.bankDeposit.delete}>Delete</Checkbox>
-            </Col>
-          </Row>
-        </Checkbox.Group>
-        <Checkbox.Group className="add-userType-form-crudGroup">
-          <Row>
-            <Col span={8}>
-              <Checkbox name="account.bankWithdraw" value={formData.permissions.account.bankWithdraw}>Bank Withdraw</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.bankWithdraw.read" value={formData.permissions.account.bankWithdraw.read}>View</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.bankWithdraw.create" value={formData.permissions.account.bankWithdraw.create}>Add</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.bankWithdraw.update" value={formData.permissions.account.bankWithdraw.update}>Edit</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.bankWithdraw.delete" value={formData.permissions.account.bankWithdraw.delete}>Delete</Checkbox>
-            </Col>
-          </Row>
-        </Checkbox.Group>
-        <Checkbox.Group className="add-userType-form-crudGroup">
-          <Row>
-            <Col span={8}>
-              <Checkbox name="account.bankTransfer" value={formData.permissions.account.bankTransfer}>Bank Transfer</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.bankTransfer.read" value={formData.permissions.account.bankTransfer.read}>View</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.bankTransfer.create" value={formData.permissions.account.bankTransfer.create}>Add</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.bankTransfer.update" value={formData.permissions.account.bankTransfer.update}>Edit</Checkbox>
-            </Col>
-            <Col span={4}>
-              <Checkbox name="account.bankTransfer.delete" value={formData.permissions.account.bankTransfer.delete}>Delete</Checkbox>
+              <Checkbox
+                value="sales.salesList.delete"
+                onChange={handleCheck}
+                checked={permissions.sales.salesList.delete ? true : false}
+              >
+                Delete
+              </Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
@@ -491,89 +460,1099 @@ const AddUserTypeForm = ({
         <Checkbox.Group className="add-userType-form-crudGroup_single">
           <Row>
             <Col span={8}>
-              <Checkbox name="companySetup" value={formData.permissions.companySetup}>Company Setup</Checkbox>
+              <Checkbox
+                value="collection"
+                onChange={handleCheck}
+                checked={permissions.collection.active ? true : false}
+              >
+                Collection
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="companySetup.read" value={formData.permissions.companySetup.read}>View</Checkbox>
+              <Checkbox
+                value="collection.read"
+                onChange={handleCheck}
+                checked={permissions.collection.read ? true : false}
+              >
+                View
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="companySetup.create" value={formData.permissions.companySetup.create}>Add</Checkbox>
+              <Checkbox
+                value="collection.create"
+                onChange={handleCheck}
+                checked={permissions.collection.create ? true : false}
+              >
+                Add
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="companySetup.update" value={formData.permissions.companySetup.update}>Edit</Checkbox>
+              <Checkbox
+                value="collection.update"
+                onChange={handleCheck}
+                checked={permissions.collection.update ? true : false}
+              >
+                Edit
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox name="companySetup.delete" value={formData.permissions.companySetup.delete}>Delete</Checkbox>
+              <Checkbox
+                value="collection.delete"
+                onChange={handleCheck}
+                checked={permissions.collection.delete ? true : false}
+              >
+                Delete
+              </Checkbox>
+            </Col>
+          </Row>
+        </Checkbox.Group>
+        <Checkbox.Group className="add-userType-form-crudGroup_single">
+          <Row>
+            <Col span={8}>
+              <Checkbox
+                value="payment"
+                onChange={handleCheck}
+                checked={permissions.payment.active ? true : false}
+              >
+                Payment
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="payment.read"
+                onChange={handleCheck}
+                checked={permissions.payment.read ? true : false}
+              >
+                View
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="payment.create"
+                onChange={handleCheck}
+                checked={permissions.payment.create ? true : false}
+              >
+                Add
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="payment.update"
+                onChange={handleCheck}
+                checked={permissions.payment.update ? true : false}
+              >
+                Edit
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="payment.delete"
+                onChange={handleCheck}
+                checked={permissions.payment.delete ? true : false}
+              >
+                Delete
+              </Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
       </>
       <Divider />
       <>
-        <Checkbox>Report</Checkbox>
+        <Checkbox
+          value="hrManagement"
+          onChange={handleCheck}
+          checked={permissions.hrManagement.active ? true : false}
+        >
+          HR Management
+        </Checkbox>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
-            <Col span={8} style={{ marginLeft: "20px" }}>
-              <Checkbox style={{ marginLeft: "0" }} value="B">Sales Report</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="C">Sales Details</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="D">Customer Report</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="E">Customer Due Report</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="B">Cash Statement</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="C">Bank Statement</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="D">Monthly Salary Sheet</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="E">Collection Report</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="E">Employee Report</Checkbox>
+            <Col span={8}>
+              <Checkbox
+                value="hrManagement.employeeType"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.employeeType.active ? true : false
+                }
+              >
+                Employee Type
+              </Checkbox>
             </Col>
-            <Col span={8} style={{ marginLeft: "20px" }}>
-              <Checkbox style={{ marginLeft: "0" }} value="B">Employee Expense</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="C">Customer Ledger</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="D">Expense Head</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="E">Account Ledger</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="C">Expense Report</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="D">Profit and Loss Report</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="E">Employee Ledger</Checkbox>
+            <Col span={4}>
+              <Checkbox
+                value="hrManagement.employeeType.read"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.employeeType.read ? true : false
+                }
+              >
+                View
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="hrManagement.employeeType.create"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.employeeType.create ? true : false
+                }
+              >
+                Add
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="hrManagement.employeeType.update"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.employeeType.update ? true : false
+                }
+              >
+                Edit
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="hrManagement.employeeType.delete"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.employeeType.delete ? true : false
+                }
+              >
+                Delete
+              </Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8}>
-              <Checkbox value="A">User Type</Checkbox>
+              <Checkbox
+                value="hrManagement.designation"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.designation.active ? true : false
+                }
+              >
+                Designation
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="B">View</Checkbox>
+              <Checkbox
+                value="hrManagement.designation.read"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.designation.read ? true : false
+                }
+              >
+                View
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="C">Add</Checkbox>
+              <Checkbox
+                value="hrManagement.designation.create"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.designation.create ? true : false
+                }
+              >
+                Add
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="D">Edit</Checkbox>
+              <Checkbox
+                value="hrManagement.designation.update"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.designation.update ? true : false
+                }
+              >
+                Edit
+              </Checkbox>
             </Col>
             <Col span={4}>
-              <Checkbox value="E">Delete</Checkbox>
+              <Checkbox
+                value="hrManagement.designation.delete"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.designation.delete ? true : false
+                }
+              >
+                Delete
+              </Checkbox>
+            </Col>
+          </Row>
+        </Checkbox.Group>
+        <Checkbox.Group className="add-userType-form-crudGroup">
+          <Row>
+            <Col span={8}>
+              <Checkbox
+                value="hrManagement.employeeList"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.employeeList.active ? true : false
+                }
+              >
+                Employee List
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="hrManagement.employeeList.read"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.employeeList.read ? true : false
+                }
+              >
+                View
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="hrManagement.employeeList.create"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.employeeList.create ? true : false
+                }
+              >
+                Add
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="hrManagement.employeeList.update"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.employeeList.update ? true : false
+                }
+              >
+                Edit
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="hrManagement.employeeList.delete"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.employeeList.delete ? true : false
+                }
+              >
+                Delete
+              </Checkbox>
+            </Col>
+          </Row>
+        </Checkbox.Group>
+        <Checkbox.Group className="add-userType-form-crudGroup">
+          <Row>
+            <Col span={8}>
+              <Checkbox
+                value="hrManagement.monthlySalary"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.monthlySalary.active ? true : false
+                }
+              >
+                Monthly Salary
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="hrManagement.monthlySalary.read"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.monthlySalary.read ? true : false
+                }
+              >
+                View
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="hrManagement.monthlySalary.create"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.monthlySalary.create ? true : false
+                }
+              >
+                Add
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="hrManagement.monthlySalary.update"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.monthlySalary.update ? true : false
+                }
+              >
+                Edit
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="hrManagement.monthlySalary.delete"
+                onChange={handleCheck}
+                checked={
+                  permissions.hrManagement.monthlySalary.delete ? true : false
+                }
+              >
+                Delete
+              </Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
       </>
       <Divider />
       <>
-        <Checkbox>Dashboard</Checkbox>
+        <Checkbox
+          value="account"
+          onChange={handleCheck}
+          checked={permissions.account.active ? true : false}
+        >
+          Account
+        </Checkbox>
+        <Checkbox.Group className="add-userType-form-crudGroup">
+          <Row>
+            <Col span={8}>
+              <Checkbox
+                value="account.journal"
+                onChange={handleCheck}
+                checked={permissions.account.journal.active ? true : false}
+              >
+                Journal
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.journal.read"
+                onChange={handleCheck}
+                checked={permissions.account.journal.read ? true : false}
+              >
+                View
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.journal.create"
+                onChange={handleCheck}
+                checked={permissions.account.journal.create ? true : false}
+              >
+                Add
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.journal.update"
+                onChange={handleCheck}
+                checked={permissions.account.journal.update ? true : false}
+              >
+                Edit
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.journal.delete"
+                onChange={handleCheck}
+                checked={permissions.account.journal.delete ? true : false}
+              >
+                Delete
+              </Checkbox>
+            </Col>
+          </Row>
+        </Checkbox.Group>
+        <Checkbox.Group className="add-userType-form-crudGroup">
+          <Row>
+            <Col span={8}>
+              <Checkbox
+                value="account.accountHead"
+                onChange={handleCheck}
+                checked={permissions.account.accountHead.active ? true : false}
+              >
+                Account Head
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.accountHead.read"
+                onChange={handleCheck}
+                checked={permissions.account.accountHead.read ? true : false}
+              >
+                View
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.accountHead.create"
+                onChange={handleCheck}
+                checked={permissions.account.accountHead.create ? true : false}
+              >
+                Add
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.accountHead.update"
+                onChange={handleCheck}
+                checked={permissions.account.accountHead.update ? true : false}
+              >
+                Edit
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.accountHead.delete"
+                onChange={handleCheck}
+                checked={permissions.account.accountHead.delete ? true : false}
+              >
+                Delete
+              </Checkbox>
+            </Col>
+          </Row>
+        </Checkbox.Group>
+        <Checkbox.Group className="add-userType-form-crudGroup">
+          <Row>
+            <Col span={8}>
+              <Checkbox
+                value="account.subHead"
+                onChange={handleCheck}
+                checked={permissions.account.subHead.active ? true : false}
+              >
+                Sub Head
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.subHead.read"
+                onChange={handleCheck}
+                checked={permissions.account.subHead.read ? true : false}
+              >
+                View
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.subHead.create"
+                onChange={handleCheck}
+                checked={permissions.account.subHead.create ? true : false}
+              >
+                Add
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.subHead.update"
+                onChange={handleCheck}
+                checked={permissions.account.subHead.update ? true : false}
+              >
+                Edit
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.subHead.delete"
+                onChange={handleCheck}
+                checked={permissions.account.subHead.delete ? true : false}
+              >
+                Delete
+              </Checkbox>
+            </Col>
+          </Row>
+        </Checkbox.Group>
+        <Checkbox.Group className="add-userType-form-crudGroup">
+          <Row>
+            <Col span={8}>
+              <Checkbox
+                value="account.bankSetup"
+                onChange={handleCheck}
+                checked={permissions.account.bankSetup.active ? true : false}
+              >
+                Bank Setup
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.bankSetup.read"
+                onChange={handleCheck}
+                checked={permissions.account.bankSetup.read ? true : false}
+              >
+                View
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.bankSetup.create"
+                onChange={handleCheck}
+                checked={permissions.account.bankSetup.create ? true : false}
+              >
+                Add
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.bankSetup.update"
+                onChange={handleCheck}
+                checked={permissions.account.bankSetup.update ? true : false}
+              >
+                Edit
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.bankSetup.delete"
+                onChange={handleCheck}
+                checked={permissions.account.bankSetup.delete ? true : false}
+              >
+                Delete
+              </Checkbox>
+            </Col>
+          </Row>
+        </Checkbox.Group>
+        <Checkbox.Group className="add-userType-form-crudGroup">
+          <Row>
+            <Col span={8}>
+              <Checkbox
+                value="account.expense"
+                onChange={handleCheck}
+                checked={permissions.account.expense.active ? true : false}
+              >
+                Expense
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.expense.read"
+                onChange={handleCheck}
+                checked={permissions.account.expense.read ? true : false}
+              >
+                View
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.expense.create"
+                onChange={handleCheck}
+                checked={permissions.account.expense.create ? true : false}
+              >
+                Add
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.expense.update"
+                onChange={handleCheck}
+                checked={permissions.account.expense.update ? true : false}
+              >
+                Edit
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.expense.delete"
+                onChange={handleCheck}
+                checked={permissions.account.expense.delete ? true : false}
+              >
+                Delete
+              </Checkbox>
+            </Col>
+          </Row>
+        </Checkbox.Group>
+        <Checkbox.Group className="add-userType-form-crudGroup">
+          <Row>
+            <Col span={8}>
+              <Checkbox
+                value="account.otherIncome"
+                onChange={handleCheck}
+                checked={permissions.account.otherIncome.active ? true : false}
+              >
+                Others Income
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.otherIncome.read"
+                onChange={handleCheck}
+                checked={permissions.account.otherIncome.read ? true : false}
+              >
+                View
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.otherIncome.create"
+                onChange={handleCheck}
+                checked={permissions.account.otherIncome.create ? true : false}
+              >
+                Add
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.otherIncome.update"
+                onChange={handleCheck}
+                checked={permissions.account.otherIncome.update ? true : false}
+              >
+                Edit
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.otherIncome.delete"
+                onChange={handleCheck}
+                checked={permissions.account.otherIncome.delete ? true : false}
+              >
+                Delete
+              </Checkbox>
+            </Col>
+          </Row>
+        </Checkbox.Group>
+        <Checkbox.Group className="add-userType-form-crudGroup">
+          <Row>
+            <Col span={8}>
+              <Checkbox
+                value="account.bankDeposit"
+                onChange={handleCheck}
+                checked={permissions.account.bankDeposit.active ? true : false}
+              >
+                Bank Deposit
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.bankDeposit.read"
+                onChange={handleCheck}
+                checked={permissions.account.bankDeposit.read ? true : false}
+              >
+                View
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.bankDeposit.create"
+                onChange={handleCheck}
+                checked={permissions.account.bankDeposit.create ? true : false}
+              >
+                Add
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.bankDeposit.update"
+                onChange={handleCheck}
+                checked={permissions.account.bankDeposit.update ? true : false}
+              >
+                Edit
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.bankDeposit.delete"
+                onChange={handleCheck}
+                checked={permissions.account.bankDeposit.delete ? true : false}
+              >
+                Delete
+              </Checkbox>
+            </Col>
+          </Row>
+        </Checkbox.Group>
+        <Checkbox.Group className="add-userType-form-crudGroup">
+          <Row>
+            <Col span={8}>
+              <Checkbox
+                value="account.bankWithdraw"
+                onChange={handleCheck}
+                checked={permissions.account.bankWithdraw.active ? true : false}
+              >
+                Bank Withdraw
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.bankWithdraw.read"
+                onChange={handleCheck}
+                checked={permissions.account.bankWithdraw.read ? true : false}
+              >
+                View
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.bankWithdraw.create"
+                onChange={handleCheck}
+                checked={permissions.account.bankWithdraw.create ? true : false}
+              >
+                Add
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.bankWithdraw.update"
+                onChange={handleCheck}
+                checked={permissions.account.bankWithdraw.update ? true : false}
+              >
+                Edit
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.bankWithdraw.delete"
+                onChange={handleCheck}
+                checked={permissions.account.bankWithdraw.delete ? true : false}
+              >
+                Delete
+              </Checkbox>
+            </Col>
+          </Row>
+        </Checkbox.Group>
+        <Checkbox.Group className="add-userType-form-crudGroup">
+          <Row>
+            <Col span={8}>
+              <Checkbox
+                value="account.bankTransfer"
+                onChange={handleCheck}
+                checked={permissions.account.bankTransfer.active ? true : false}
+              >
+                Bank Transfer
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.bankTransfer.read"
+                onChange={handleCheck}
+                checked={permissions.account.bankTransfer.read ? true : false}
+              >
+                View
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.bankTransfer.create"
+                onChange={handleCheck}
+                checked={permissions.account.bankTransfer.create ? true : false}
+              >
+                Add
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.bankTransfer.update"
+                onChange={handleCheck}
+                checked={permissions.account.bankTransfer.update ? true : false}
+              >
+                Edit
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="account.bankTransfer.delete"
+                onChange={handleCheck}
+                checked={permissions.account.bankTransfer.delete ? true : false}
+              >
+                Delete
+              </Checkbox>
+            </Col>
+          </Row>
+        </Checkbox.Group>
+      </>
+      <Divider />
+      <>
+        <Checkbox.Group className="add-userType-form-crudGroup_single">
+          <Row>
+            <Col span={8}>
+              <Checkbox
+                value="companySetup"
+                onChange={handleCheck}
+                checked={permissions.companySetup.active ? true : false}
+              >
+                Company Setup
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="companySetup.read"
+                onChange={handleCheck}
+                checked={permissions.companySetup.read ? true : false}
+              >
+                View
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="companySetup.create"
+                onChange={handleCheck}
+                checked={permissions.companySetup.create ? true : false}
+              >
+                Add
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="companySetup.update"
+                onChange={handleCheck}
+                checked={permissions.companySetup.update ? true : false}
+              >
+                Edit
+              </Checkbox>
+            </Col>
+            <Col span={4}>
+              <Checkbox
+                value="companySetup.delete"
+                onChange={handleCheck}
+                checked={permissions.companySetup.delete ? true : false}
+              >
+                Delete
+              </Checkbox>
+            </Col>
+          </Row>
+        </Checkbox.Group>
+      </>
+      <Divider />
+      <>
+        <Checkbox
+          value="report"
+          onChange={handleCheck}
+          checked={permissions.report.active ? true : false}
+        >
+          Report
+        </Checkbox>
         <Checkbox.Group className="add-userType-form-crudGroup">
           <Row>
             <Col span={8} style={{ marginLeft: "20px" }}>
-              <Checkbox style={{ marginLeft: "0" }} value="B">Cash Statement</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="C">Bank Statement</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="D">Daily Sales</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="E">Monthly Sales</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="B">Daily Purchases</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="C">Monthly Purchases</Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="report.salesReport"
+                onChange={handleCheck}
+                checked={permissions.report.salesReport ? true : false}
+              >
+                Sales Report
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="report.salesDetails"
+                onChange={handleCheck}
+                checked={permissions.report.salesDetails ? true : false}
+              >
+                Sales Details
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="report.customerReport"
+                onChange={handleCheck}
+                checked={permissions.report.customerReport ? true : false}
+              >
+                Customer Report
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="report.customerDueReport"
+                onChange={handleCheck}
+                checked={permissions.report.customerDueReport ? true : false}
+              >
+                Customer Due Report
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="report.cashStatement"
+                onChange={handleCheck}
+                checked={permissions.report.cashStatement ? true : false}
+              >
+                Cash Statement
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="report.bankStatement"
+                onChange={handleCheck}
+                checked={permissions.report.bankStatement ? true : false}
+              >
+                Bank Statement
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="report.monthlySalarySheet"
+                onChange={handleCheck}
+                checked={permissions.report.monthlySalarySheet ? true : false}
+              >
+                Monthly Salary Sheet
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="report.collectionReport"
+                onChange={handleCheck}
+                checked={permissions.report.collectionReport ? true : false}
+              >
+                Collection Report
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="report.employeeReport"
+                onChange={handleCheck}
+                checked={permissions.report.employeeReport ? true : false}
+              >
+                Employee Report
+              </Checkbox>
             </Col>
             <Col span={8} style={{ marginLeft: "20px" }}>
-              <Checkbox style={{ marginLeft: "0" }} value="B">Daily Collection</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="C">Monthly Collection</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="D">Monthly Payment</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="E">Daily Expense</Checkbox>
-              <Checkbox style={{ marginLeft: "0" }} value="C">Monthly Expense</Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="report.employeeExpense"
+                onChange={handleCheck}
+                checked={permissions.report.employeeExpense ? true : false}
+              >
+                Employee Expense
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="report.customerLedger"
+                onChange={handleCheck}
+                checked={permissions.report.customerLedger ? true : false}
+              >
+                Customer Ledger
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="report.expenseHead"
+                onChange={handleCheck}
+                checked={permissions.report.expenseHead ? true : false}
+              >
+                Expense Head
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="report.accountLedger"
+                onChange={handleCheck}
+                checked={permissions.report.accountLedger ? true : false}
+              >
+                Account Ledger
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="report.expenseReport"
+                onChange={handleCheck}
+                checked={permissions.report.expenseReport ? true : false}
+              >
+                Expense Report
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="report.profileAndLossReport"
+                onChange={handleCheck}
+                checked={permissions.report.profileAndLossReport ? true : false}
+              >
+                Profit and Loss Report
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="report.employeeLedger"
+                onChange={handleCheck}
+                checked={permissions.report.employeeLedger ? true : false}
+              >
+                Employee Ledger
+              </Checkbox>
+            </Col>
+          </Row>
+        </Checkbox.Group>
+      </>
+      <Divider />
+      <>
+        <Checkbox
+          value="dashboard"
+          onChange={handleCheck}
+          checked={permissions.dashboard.active ? true : false}
+        >
+          Dashboard
+        </Checkbox>
+        <Checkbox.Group className="add-userType-form-crudGroup">
+          <Row>
+            <Col span={8} style={{ marginLeft: "20px" }}>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="dashboard.cashStatement"
+                onChange={handleCheck}
+                checked={permissions.dashboard.cashStatement ? true : false}
+              >
+                Cash Statement
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="dashboard.bankStatement"
+                onChange={handleCheck}
+                checked={permissions.dashboard.bankStatement ? true : false}
+              >
+                Bank Statement
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="dashboard.dailySales"
+                onChange={handleCheck}
+                checked={permissions.dashboard.dailySales ? true : false}
+              >
+                Daily Sales
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="dashboard.monthlySales"
+                onChange={handleCheck}
+                checked={permissions.dashboard.monthlySales ? true : false}
+              >
+                Monthly Sales
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="dashboard.dailyPurchase"
+                onChange={handleCheck}
+                checked={permissions.dashboard.dailyPurchase ? true : false}
+              >
+                Daily Purchases
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="dashboard.monthlyPurchase"
+                onChange={handleCheck}
+                checked={permissions.dashboard.monthlyPurchase ? true : false}
+              >
+                Monthly Purchases
+              </Checkbox>
+            </Col>
+            <Col span={8} style={{ marginLeft: "20px" }}>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="dashboard.dailyCollection"
+                onChange={handleCheck}
+                checked={permissions.dashboard.dailyCollection ? true : false}
+              >
+                Daily Collection
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="dashboard.monthlyCollection"
+                onChange={handleCheck}
+                checked={permissions.dashboard.monthlyCollection ? true : false}
+              >
+                Monthly Collection
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="dashboard.dailyPayment"
+                onChange={handleCheck}
+                checked={permissions.dashboard.dailyPayment ? true : false}
+              >
+                Monthly Payment
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="dashboard.dailyExpense"
+                onChange={handleCheck}
+                checked={permissions.dashboard.dailyExpense ? true : false}
+              >
+                Daily Expense
+              </Checkbox>
+              <Checkbox
+                style={{ marginLeft: "0" }}
+                value="dashboard.monthlyExpense"
+                onChange={handleCheck}
+                checked={permissions.dashboard.monthlyExpense ? true : false}
+              >
+                Monthly Expense
+              </Checkbox>
             </Col>
           </Row>
         </Checkbox.Group>
