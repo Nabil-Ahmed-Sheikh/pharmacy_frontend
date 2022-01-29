@@ -6,6 +6,9 @@ import {
   GET_USER_TYPE_REQUEST,
   GET_USER_TYPE_SUCCESS,
   GET_USER_TYPE_FAIL,
+  DELETE_USER_TYPE_REQUEST,
+  DELETE_USER_TYPE_SUCCESS,
+  DELETE_USER_TYPE_FAIL,
 } from "../constants/hrAdminConstants";
 import { message } from "antd";
 
@@ -78,11 +81,10 @@ export const getUserType = () => async (dispatch, getState) => {
       config
     );
 
-    console.log(data);
     dispatch({
       type: GET_USER_TYPE_SUCCESS,
       payload: {
-        message: message,
+        message: data.message,
         userTypeList: data.userTypeList,
       },
     });
@@ -102,3 +104,47 @@ export const getUserType = () => async (dispatch, getState) => {
     );
   }
 };
+
+export const deleteUserType =
+  ({ id }) =>
+  async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: DELETE_USER_TYPE_REQUEST,
+      });
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer " +
+            JSON.parse(localStorage.getItem("userInfo"))?.user.token,
+        },
+      };
+
+      const { data } = await axios.post(
+        `${REACT_APP_API_DOMAIN}/user/removeUserTypes`,
+        { id },
+        config
+      );
+
+      dispatch({
+        type: DELETE_USER_TYPE_SUCCESS,
+        payload: data.message,
+      });
+      message.success(data.message);
+    } catch (error) {
+      dispatch({
+        type: DELETE_USER_TYPE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+      message.error(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      );
+    }
+  };

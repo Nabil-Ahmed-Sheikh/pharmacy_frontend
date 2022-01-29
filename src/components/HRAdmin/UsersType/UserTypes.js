@@ -29,7 +29,6 @@ const UserTypes = () => {
         loading={loading}
         message={message}
       />
-      <UserTypeList />
     </div>
   );
 };
