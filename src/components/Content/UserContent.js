@@ -5,70 +5,70 @@ import { Route, Switch } from "react-router-dom";
 import UserTypes from "../HRAdmin/UsersType/UserTypes";
 import Users from "../HRAdmin/User/Users";
 
-import CustomerList from "../Contact/CustomerList";
-import SupplierList from "../Contact/SupplierList";
+import CustomerList from "../Contact/CustomerList/CustomerList";
+import SupplierList from "../Contact/SupplierList/SupplierList";
 
-import AddMedicine from "../Medicine/AddMedicine";
-import MedicineList from "../Medicine/MedicineList";
+import AddMedicine from "../Medicine/AddMedicine/AddMedicine";
+import MedicineList from "../Medicine/MedicineList/MedicineList";
 
-import AddPurchases from "../Purchases/AddPurchases";
-import PurchasesList from "../Purchases/PurchasesList";
+import AddPurchases from "../Purchases/AddPurchases/AddPurchases";
+import PurchasesList from "../Purchases/PurchasesList/PurchasesList";
 
-import AddSale from "../Sales/AddSale";
-import SalesList from "../Sales/SalesList";
+import AddSale from "../Sales/AddSale/AddSale";
+import SalesList from "../Sales/SalesList/SalesList";
 
-import AddCollection from "../Collection/AddCollection";
-import CollectionList from "../Collection/CollectionList";
+import AddCollection from "../Collection/AddCollection/AddCollection";
+import CollectionList from "../Collection/CollectionList/CollectionList";
 
-import AddPayment from "../Payment/AddPayment";
-import PaymentList from "../Payment/PaymentList";
+import AddPayment from "../Payment/AddPayment/AddPayment";
+import PaymentList from "../Payment/PaymentList/PaymentList";
 
-import EmployeeType from "../HRManagement/EmployeeType";
-import Designation from "../HRManagement/Designation";
-import EmployeeList from "../HRManagement/EmployeeList";
-import MonthlySalary from "../HRManagement/MonthlySalary";
+import EmployeeType from "../HRManagement/EmployeeType/EmployeeType";
+import Designation from "../HRManagement/Designation/Designation";
+import EmployeeList from "../HRManagement/EmployeeList/EmployeeList";
+import MonthlySalary from "../HRManagement/MonthlySalary/MonthlySalary";
 
-import ExpenseList from "../Account/ExpenseList";
-import OthersIncome from "../Account/OthersIncome";
-import BankDeposit from "../Account/BankDeposit";
-import BankWithdraw from "../Account/BankWithdraw";
-import BankTransfer from "../Account/BankTransfer";
+import ExpenseList from "../Account/ExpenseList/ExpenseList";
+import OthersIncome from "../Account/OthersIncome/OthersIncome";
+import BankDeposit from "../Account/BankDeposit/BankDeposit";
+import BankWithdraw from "../Account/BankWithdraw/BankWithdraw";
+import BankTransfer from "../Account/BankTransfer/BankTransfer";
 
-import CashStatementReport from "../Report/CashStatementReport";
-import ExpireMedicineReport from "../Report/ExpireMedicineReport";
-import StockReport from "../Report/StockReport";
-import SalesReport from "../Report/SalesReport";
-import PurchasesReport from "../Report/PurchasesReport";
-import SalesDetails from "../Report/SalesDetails";
-import CustomerReport from "../Report/CustomerReport";
-import SupplierReport from "../Report/SupplierReport";
-import CustomerDueReport from "../Report/CustomerDueReport";
-import BankStatement from "../Report/BankStatement";
-import CollectionReport from "../Report/CollectionReport";
-import PaymentReport from "../Report/PaymentReport";
-import EmployeeReport from "../Report/EmployeeReport";
-import EmployeeExpense from "../Report/EmployeeExpense";
-import EmployeeLedger from "../Report/EmployeeLedger";
-import EmployeeSalarySheet from "../Report/EmployeeSalarySheet";
-import CustomerLedger from "../Report/CustomerLedger";
-import SupplierLedger from "../Report/SupplierLedger";
-import ExpenseHeadReport from "../Report/ExpenseHeadReport";
-import HeadWiseReport from "../Report/HeadWiseReport";
-import ExpenseDetailsReport from "../Report/ExpenseDetailsReport";
-import InvoiceWiseProfit from "../Report/InvoiceWiseProfit";
-import NetProfitLoss from "../Report/NetProfitLoss";
+import CashStatementReport from "../Report/CashStatementReport/CashStatementReport";
+import ExpireMedicineReport from "../Report/ExpireMedicineReport/ExpireMedicineReport";
+import StockReport from "../Report/StockReport/StockReport";
+import SalesReport from "../Report/SalesReport/SalesReport";
+import PurchasesReport from "../Report/PurchasesReport/PaymentReport";
+import SalesDetails from "../Report/SalesDetails/SalesDetails";
+import CustomerReport from "../Report/CustomerReport/CustomerReport";
+import SupplierReport from "../Report/SupplierReport/SupplierReport";
+import CustomerDueReport from "../Report/CustomerDueReport/CustomerDueReport";
+import BankStatement from "../Report/BankStatement/BankStatement";
+import CollectionReport from "../Report/CollectionReport/CollectionReport";
+import PaymentReport from "../Report/PaymentReport/PurchasesReport";
+import EmployeeReport from "../Report/EmployeeReport/EmployeeReport";
+import EmployeeExpense from "../Report/EmployeeExpense/EmployeeExpense";
+import EmployeeLedger from "../Report/EmployeeLedger/EmployeeLedger";
+import EmployeeSalarySheet from "../Report/EmployeeSalarySheet/EmployeeSalarySheet";
+import CustomerLedger from "../Report/CustomerLedger/CustomerLedger";
+import SupplierLedger from "../Report/SupplierLedger/SupplierLedger";
+import ExpenseHeadReport from "../Report/ExpenseHeadReport/ExpenseHeadReport";
+import HeadWiseReport from "../Report/HeadWiseReport/HeadWiseReport";
+import ExpenseDetailsReport from "../Report/ExpenseDetailsReport/ExpenseDetailsReport";
+import InvoiceWiseProfit from "../Report/InvoiceWiseProfit/InvoiceWiseProfit";
+import NetProfitLoss from "../Report/NetProfitLoss/NetProfitLoss";
 
-import GenericList from "../Setting/GenericList";
-import CompanyList from "../Setting/CompanyList";
-import MedicineForm from "../Setting/MedicineForm";
-import RackList from "../Setting/RackList";
-import JournalList from "../Setting/JournalList";
-import AccountHead from "../Setting/AccountHead";
-import SubHead from "../Setting/SubHead";
-import BankSetup from "../Setting/BankSetup";
-import CompanySetup from "../Setting/CompanySetup";
-import DatabaseBackup from "../Setting/DatabaseBackup";
-import CommitTest from "../Setting/CommitTest";
+import GenericList from "../Setting/GenericList/GenericList";
+import CompanyList from "../Setting/CompanyList/CompanyList";
+import MedicineForm from "../Setting/MedicineForm/MedicineForm";
+import RackList from "../Setting/RackList/RackList";
+import JournalList from "../Setting/JournalList/JournalList";
+import AccountHead from "../Setting/AccountHead/AccountHead";
+import SubHead from "../Setting/SubHead/SubHead";
+import BankSetup from "../Setting/BankSetup/BankSetup";
+import CompanySetup from "../Setting/CompanySetup/CompanySetup";
+import DatabaseBackup from "../Setting/DatabaseBackup/DatabaseBackup";
+import CommitTest from "../Setting/CommitTest/CommitTest";
 
 const UserContent = ({ collapsed }) => {
   return (
