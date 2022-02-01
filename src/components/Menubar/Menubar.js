@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import "./Menubar.css";
 import { Button, Menu } from "antd";
+import { logout } from "../../redux/actions/authActions";
+import { useDispatch, useSelector } from "react-redux";
 import {
   FiChevronLeft,
   FiChevronRight,
@@ -35,10 +37,15 @@ const { SubMenu } = Menu;
 
 const Menubar = ({ collapsed, toggleCollapsed }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const goto = (value) => {
     let prefix = "/user";
     history.push(prefix + value);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
   };
 
   return (
@@ -255,6 +262,9 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </MenuItem>
           <MenuItem onClick={() => goto("/commit_test")}>Commit Test</MenuItem>
         </SubMenu>
+        <MenuItem key="15" icon={<FiGrid />} onClick={handleLogout}>
+          Logout
+        </MenuItem>
       </Menu>
     </div>
   );

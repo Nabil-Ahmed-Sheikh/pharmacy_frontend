@@ -1,8 +1,10 @@
+import { message } from "antd";
 import axios from "axios";
 import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
   USER_LOGIN_FAIL,
+  USER_LOGOUT,
 } from "../constants/userConstants";
 
 let { REACT_APP_API_DOMAIN } = process.env;
@@ -42,5 +44,17 @@ export const login = (username, password) => async (dispatch, getState) => {
           ? error.response.data.message
           : error.message,
     });
+  }
+};
+
+export const logout = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USER_LOGOUT,
+    });
+    localStorage.removeItem("userInfo");
+    message.success("Logged out");
+  } catch (error) {
+    message.error("Something went wrong");
   }
 };
