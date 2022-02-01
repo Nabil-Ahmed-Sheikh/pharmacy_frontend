@@ -5,15 +5,15 @@
     02.     User------------------Done
 
 03.	 Contact
-    01.    Customer List----------Done
-    02.    Supplier List----------Done
+    01.    CustomerList----------Done
+    02.    SupplierList----------Done
 
 04.	 Medicine
-    01.     Add Medicine----------Done
-    02.     Medicine List---------Done
+    01.     AddMedicine----------Done
+    02.     MedicineList---------Done
 
 05.	 Purchases
-    01.     Add Purchases---------Done
+    01.     AddPurchases---------Done
     02.     PurchasesList---------Done
 
 06.	 Sales
