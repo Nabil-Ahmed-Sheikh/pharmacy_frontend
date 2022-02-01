@@ -158,16 +158,8 @@ const UserContent = ({ collapsed }) => {
           component={ExpenseHeadReport}
         />
         <Route exact path="/user/head_wise_report" component={HeadWiseReport} />
-        <Route
-          exact
-          path="/user/expense_details_report"
-          component={ExpenseDetailsReport}
-        />
-        <Route
-          exact
-          path="/user/invoice_wise_profit"
-          component={InvoiceWiseProfit}
-        />
+        <Route exact path="/user/expense_details_report" component={ExpenseDetailsReport} />
+        <Route exact path="/user/invoice_wise_profit" component={InvoiceWiseProfit}/>
         <Route exact path="/user/net_profit_loss" component={NetProfitLoss} />
 
         <Route exact path="/user/generic_list" component={GenericList} />
