@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import ReactDOM from 'react-dom';
 import { Checkbox, Row, Col, Divider, Input, Select } from "antd";
 // import "./AddUserTypeForm.css";
 import { FiUser, FiMail, FiUserPlus, FiPhoneCall, FiKey } from "react-icons/fi";
+
+
+import 'antd/dist/antd.css';
+import { Upload } from 'antd';
+import ImgCrop from 'antd-img-crop';
 
 const { Option } = Select;
 
@@ -13,6 +19,30 @@ const AddUserTypeForm = ({
   handleCheckAllPermission,
 }) => {
   const { permissions } = formData;
+
+
+  const [fileList, setFileList] = useState([
+    
+  ]);
+
+  const onChange = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
+  };
+
+  const onPreview = async file => {
+    let src = file.url;
+    if (!src) {
+      src = await new Promise(resolve => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file.originFileObj);
+        reader.onload = () => resolve(reader.result);
+      });
+    }
+    const image = new Image();
+    image.src = src;
+    const imgWindow = window.open(src);
+    imgWindow.document.write(image.outerHTML);
+  };
 
   return (
     <div className="add-user-form">
@@ -112,19 +142,6 @@ const AddUserTypeForm = ({
             <Col sm={24} md={12}>
                 <div>
                     <label>
-                    <h4>Profile Picture</h4>
-                    </label>
-                    <Input
-                    addonBefore={<FiUser />}
-                    name="fullName"
-                    onChange={handleChangeUserType}
-                    />
-                </div>
-            </Col>
-
-            <Col sm={24} md={12}>
-                <div>
-                    <label>
                     <h4>Status</h4>
                     </label>
                     <Select
@@ -137,6 +154,33 @@ const AddUserTypeForm = ({
                         </Select>
                 </div>
             </Col>
+            <Col sm={24} md={12}>
+                <div>
+                    <label>
+                    <h4>Profile Picture</h4>
+                    </label>
+                    {/* <Input
+                    addonBefore={<FiUser />}
+                    name="fullName"
+                    onChange={handleChangeUserType}
+                    /> */}
+
+
+                    <ImgCrop rotate>
+                        <Upload
+                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                            listType="picture-card"
+                            fileList={fileList}
+                            onChange={onChange}
+                            onPreview={onPreview}
+                        >
+                            {fileList.length < 1 && '+ Upload'}
+                        </Upload>
+                    </ImgCrop>
+                </div>
+            </Col>
+
+            
 
         </Row>
     </div>
