@@ -133,4 +133,4 @@ let permissions = {
   },
 };
 
-module.exports = permissions;
+export default permissions;

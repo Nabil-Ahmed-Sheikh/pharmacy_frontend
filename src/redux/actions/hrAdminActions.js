@@ -160,7 +160,7 @@ export const addUser = (obj) => async (dispatch, getState) => {
 
     const config = {
       headers: {
-        // "Content-Type": "multipart/form-data",
+        "Content-Type": "multipart/form-data",
         Authorization:
           "Bearer " + JSON.parse(localStorage.getItem("userInfo"))?.user.token,
       },

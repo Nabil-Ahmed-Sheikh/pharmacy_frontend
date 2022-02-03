@@ -125,7 +125,7 @@ const AddUserForm = ({
                   onChange={handleChangeUserType}
                   value={formData.userType}
                 >
-                  {userTypeList.length > 0 &&
+                  {userTypeList?.length > 0 &&
                     userTypeList.map((userType) => {
                       return (
                         <Option key={userType._id} value={userType._id}>
