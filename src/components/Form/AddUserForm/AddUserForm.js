@@ -1,190 +1,185 @@
 import React, { useState } from "react";
-import ReactDOM from 'react-dom';
+import { useSelector } from "react-redux";
+import ReactDOM from "react-dom";
 import { Checkbox, Row, Col, Divider, Input, Select } from "antd";
-// import "./AddUserTypeForm.css";
-import { FiUser, FiMail, FiUserPlus, FiPhoneCall, FiKey } from "react-icons/fi";
+import "./AddUserForm.css";
+import {
+  FiUser,
+  FiMail,
+  FiUserPlus,
+  FiPhoneCall,
+  FiKey,
+  FiPlus,
+} from "react-icons/fi";
+import defaultImagePreview from "../../../assets/images/avatar.png";
 
-
-import 'antd/dist/antd.css';
-import { Upload } from 'antd';
-import ImgCrop from 'antd-img-crop';
+import "antd/dist/antd.css";
 
 const { Option } = Select;
 
-const AddUserTypeForm = ({
+const AddUserForm = ({
   handleChangeUserType,
   handleChangeStatus,
+  handleChange,
+  changeProfileImage,
   formData,
-  handleCheck,
-  handleCheckAllPermission,
+  profileImagePreview,
 }) => {
-  const { permissions } = formData;
-
-
-  const [fileList, setFileList] = useState([
-    
-  ]);
-
-  const onChange = ({ fileList: newFileList }) => {
-    setFileList(newFileList);
-  };
-
-  const onPreview = async file => {
-    let src = file.url;
-    if (!src) {
-      src = await new Promise(resolve => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file.originFileObj);
-        reader.onload = () => resolve(reader.result);
-      });
-    }
-    const image = new Image();
-    image.src = src;
-    const imgWindow = window.open(src);
-    imgWindow.document.write(image.outerHTML);
-  };
+  const { userTypeList } = useSelector((state) => state.getUserType);
 
   return (
     <div className="add-user-form">
-        <Row gutter={[24, 8]}>
+      <Row>
+        <Col sm={24} md={14}>
+          <Row gutter={[24, 8]}>
             <Col sm={24} md={12}>
-                <div>
-                    <label>
-                        <h4>User Name</h4>
-                    </label>
-                    <Input
-                        addonBefore={<FiUser />}
-                        name="userName"
-                        disabled
-                        onChange={handleChangeUserType}
-                    />
-                </div>
+              <div>
+                <label>
+                  <h4>User Name</h4>
+                </label>
+                <Input
+                  addonBefore={<FiUser />}
+                  name="username"
+                  onChange={handleChange}
+                  value={formData.username}
+                />
+              </div>
             </Col>
             <Col sm={24} md={12}>
-                <div>
-                    <label>
-                    <h4>Full Name</h4>
-                    </label>
-                    <Input
-                    addonBefore={<FiUserPlus />}
-                    name="fullName"
-                    onChange={handleChangeUserType}
-                    />
-                </div>
-            </Col>
-
-            <Col sm={24} md={12}>
-                <div>
-                    <label>
-                    <h4>Email Address</h4>
-                    </label>
-                    <Input
-                    addonBefore={<FiMail />}
-                    name="fullName"
-                    onChange={handleChangeUserType}
-                    />
-                </div>
-            </Col>
-            <Col sm={24} md={12}>
-                <div>
-                    <label>
-                    <h4>Mobile Number</h4>
-                    </label>
-                    <Input
-                    addonBefore={<FiPhoneCall />}
-                    name="fullName"
-                    onChange={handleChangeUserType}
-                    />
-                </div>
+              <div>
+                <label>
+                  <h4>Full Name</h4>
+                </label>
+                <Input
+                  addonBefore={<FiUserPlus />}
+                  name="name"
+                  onChange={handleChange}
+                  value={formData.name}
+                />
+              </div>
             </Col>
 
             <Col sm={24} md={12}>
-                <div>
-                    <label>
-                    <h4>Password</h4>
-                    </label>
-                    <Input
-                    addonBefore={<FiKey />}
-                    name="fullName"
-                    onChange={handleChangeUserType}
-                    />
-                </div>
+              <div>
+                <label>
+                  <h4>Email Address</h4>
+                </label>
+                <Input
+                  addonBefore={<FiMail />}
+                  name="email"
+                  onChange={handleChange}
+                  value={formData.email}
+                />
+              </div>
             </Col>
             <Col sm={24} md={12}>
-                <div>
-                    <label>
-                    <h4>Confirm Password</h4>
-                    </label>
-                    <Input
-                    addonBefore={<FiKey />}
-                    name="fullName"
-                    onChange={handleChangeUserType}
-                    />
-                </div>
+              <div>
+                <label>
+                  <h4>Mobile Number</h4>
+                </label>
+                <Input
+                  addonBefore={<FiPhoneCall />}
+                  name="phoneNo"
+                  onChange={handleChange}
+                  value={formData.phoneNo}
+                />
+              </div>
             </Col>
 
             <Col sm={24} md={12}>
-                <div>
-                    <label>
-                    <h4>User Type</h4>
-                    </label>
-                    <Select
-                        style={{ width: "100%" }}
-                        onChange={handleChangeStatus}
-                        value={'Admin'}
-                        >
-                        <Option value={"SUPERADMIN"}>Super Admin</Option>
-                        <Option value={"ADMIN"}>Admin</Option>
-                        <Option value={"SALSEMAN"}>Salesman</Option>
-                    </Select>
-                </div>
+              <div>
+                <label>
+                  <h4>Password</h4>
+                </label>
+                <Input
+                  addonBefore={<FiKey />}
+                  type="password"
+                  name="password"
+                  onChange={handleChange}
+                  value={formData.password}
+                />
+              </div>
             </Col>
             <Col sm={24} md={12}>
-                <div>
-                    <label>
-                    <h4>Status</h4>
-                    </label>
-                    <Select
-                        style={{ width: "100%" }}
-                        onChange={handleChangeStatus}
-                        value={formData.status}
-                        >
-                        <Option value={"ACTIVE"}>Active</Option>
-                        <Option value={"INACTIVE"}>Inactive</Option>
-                        </Select>
-                </div>
+              <div>
+                <label>
+                  <h4>Confirm Password</h4>
+                </label>
+                <Input
+                  addonBefore={<FiKey />}
+                  type="password"
+                  name="confirmPassword"
+                  onChange={handleChange}
+                  value={formData.confirmPassword}
+                />
+              </div>
+            </Col>
+
+            <Col sm={24} md={12}>
+              <div>
+                <label>
+                  <h4>User Type</h4>
+                </label>
+                <Select
+                  style={{ width: "100%" }}
+                  onChange={handleChangeUserType}
+                  value={formData.userType}
+                >
+                  {userTypeList.length > 0 &&
+                    userTypeList.map((userType) => {
+                      return (
+                        <Option key={userType._id} value={userType._id}>
+                          {userType.name}
+                        </Option>
+                      );
+                    })}
+                </Select>
+              </div>
             </Col>
             <Col sm={24} md={12}>
-                <div>
-                    <label>
-                    <h4>Profile Picture</h4>
-                    </label>
-                    {/* <Input
-                    addonBefore={<FiUser />}
-                    name="fullName"
-                    onChange={handleChangeUserType}
-                    /> */}
-
-
-                    <ImgCrop rotate>
-                        <Upload
-                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                            listType="picture-card"
-                            fileList={fileList}
-                            onChange={onChange}
-                            onPreview={onPreview}
-                        >
-                            {fileList.length < 1 && '+ Upload'}
-                        </Upload>
-                    </ImgCrop>
-                </div>
+              <div>
+                <label>
+                  <h4>Status</h4>
+                </label>
+                <Select
+                  style={{ width: "100%" }}
+                  onChange={handleChangeStatus}
+                  value={formData.status}
+                >
+                  <Option value={"ACTIVE"}>Active</Option>
+                  <Option value={"INACTIVE"}>Inactive</Option>
+                </Select>
+              </div>
             </Col>
-
-            
-
-        </Row>
+            <Col sm={24} md={12}>
+              <label style={{ display: "flex", flexDirection: "column" }}>
+                Select Campaign Image
+                <label className="image-btn">
+                  <div>
+                    <FiPlus />
+                  </div>
+                  <input
+                    id="profile-file-input"
+                    type="file"
+                    style={{ display: "none" }}
+                    onChange={changeProfileImage}
+                  />
+                </label>
+              </label>
+            </Col>
+          </Row>
+        </Col>
+        <Col sm={24} md={10}>
+          <img
+            className="add-user-form-image-preview"
+            src={
+              profileImagePreview ? profileImagePreview : defaultImagePreview
+            }
+          />
+        </Col>
+      </Row>
     </div>
   );
 };
 
-export default AddUserTypeForm;
+export default AddUserForm;

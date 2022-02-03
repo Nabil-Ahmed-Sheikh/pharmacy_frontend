@@ -8,6 +8,9 @@ import {
   DELETE_USER_TYPE_REQUEST,
   DELETE_USER_TYPE_SUCCESS,
   DELETE_USER_TYPE_FAIL,
+  ADD_USER_REQUEST,
+  ADD_USER_SUCCESS,
+  ADD_USER_FAIL,
 } from "../constants/hrAdminConstants";
 
 const initState = {};
@@ -52,6 +55,19 @@ export const deleteUserTypeReducer = (state = initState, action) => {
         message: action.payload.message,
       };
     case DELETE_USER_TYPE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const addUserReducer = (state = initState, action) => {
+  switch (action.type) {
+    case ADD_USER_REQUEST:
+      return { loading: true };
+    case ADD_USER_SUCCESS:
+      return { loading: false, message: action.payload };
+    case ADD_USER_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

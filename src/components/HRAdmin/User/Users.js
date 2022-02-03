@@ -5,11 +5,9 @@ import { getUserType } from "../../../redux/actions/hrAdminActions";
 import AddUserTypeModal from "../../Modal/AddUserTypeModal/AddUserTypeModal";
 import UserTypeList from "../../List/UserTypeList/UserTypeList";
 
-
 import AddUserModal from "../../Modal/AddUserModal/AddUserModal";
 
 const Users = () => {
-
   const dispatch = useDispatch();
   const [isVisible, setIsVisible] = useState(false);
   const [loadToggler, setLoadToggler] = useState(false);

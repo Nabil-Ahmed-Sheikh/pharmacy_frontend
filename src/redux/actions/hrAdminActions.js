@@ -9,6 +9,9 @@ import {
   DELETE_USER_TYPE_REQUEST,
   DELETE_USER_TYPE_SUCCESS,
   DELETE_USER_TYPE_FAIL,
+  ADD_USER_REQUEST,
+  ADD_USER_SUCCESS,
+  ADD_USER_FAIL,
 } from "../constants/hrAdminConstants";
 import { message } from "antd";
 
@@ -148,3 +151,44 @@ export const deleteUserType =
       );
     }
   };
+
+export const addUser = (obj) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: ADD_USER_REQUEST,
+    });
+
+    const config = {
+      headers: {
+        // "Content-Type": "multipart/form-data",
+        Authorization:
+          "Bearer " + JSON.parse(localStorage.getItem("userInfo"))?.user.token,
+      },
+    };
+
+    const { data } = await axios.post(
+      `${REACT_APP_API_DOMAIN}/user/createUser`,
+      obj,
+      config
+    );
+
+    dispatch({
+      type: ADD_USER_SUCCESS,
+      payload: data.message,
+    });
+    message.success(data.message);
+  } catch (error) {
+    dispatch({
+      type: ADD_USER_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    message.error(
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    );
+  }
+};
