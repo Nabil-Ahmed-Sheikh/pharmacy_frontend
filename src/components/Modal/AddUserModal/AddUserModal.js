@@ -58,7 +58,7 @@ const AddUserModal = ({ isVisible, setIsVisible, loading, message }) => {
     // for (var key of obj.entries()) {
     //   console.log(key[0] + ", " + key[1]);
     // }
-    dispatch(addUser({ obj }));
+    dispatch(addUser(obj));
   };
 
   const changeProfileImage = (e) => {
