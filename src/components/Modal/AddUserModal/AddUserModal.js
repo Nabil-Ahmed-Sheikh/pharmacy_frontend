@@ -5,7 +5,13 @@ import AddUserForm from "../../Form/AddUserForm/AddUserForm";
 import { addUser } from "../../../redux/actions/hrAdminActions";
 import "./AddUserModal.css";
 
-const AddUserModal = ({ isVisible, setIsVisible, loading, message }) => {
+const AddUserModal = ({
+  isVisible,
+  setIsVisible,
+  loading,
+  message,
+  toggleLoad,
+}) => {
   const dispatch = useDispatch();
   const [fileList, setFileList] = useState([]);
 
@@ -58,7 +64,7 @@ const AddUserModal = ({ isVisible, setIsVisible, loading, message }) => {
     // for (var key of obj.entries()) {
     //   console.log(key[0] + ", " + key[1]);
     // }
-    dispatch(addUser(obj));
+    dispatch(addUser(obj, toggleLoad));
   };
 
   const changeProfileImage = (e) => {
