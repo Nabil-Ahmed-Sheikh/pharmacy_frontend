@@ -68,7 +68,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           <MenuItem onClick={() => goto("/users")}>Users</MenuItem>
         </SubMenu>
 
-        <SubMenu key="3" title="Content" icon={<RiBubbleChartLine />}>
+        <SubMenu key="3" title="Contact" icon={<RiBubbleChartLine />}>
           <MenuItem onClick={() => goto("/customer_list")}>
             Customer List
           </MenuItem>

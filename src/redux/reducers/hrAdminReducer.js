@@ -5,6 +5,9 @@ import {
   GET_USER_TYPE_REQUEST,
   GET_USER_TYPE_SUCCESS,
   GET_USER_TYPE_FAIL,
+  GET_USER_TYPE_BY_ID_REQUEST,
+  GET_USER_TYPE_BY_ID_SUCCESS,
+  GET_USER_TYPE_BY_ID_FAIL,
   DELETE_USER_TYPE_REQUEST,
   DELETE_USER_TYPE_SUCCESS,
   DELETE_USER_TYPE_FAIL,
@@ -39,6 +42,23 @@ export const getUserTypeReducer = (state = initState, action) => {
         userTypeList: action.payload.userTypeList,
       };
     case GET_USER_TYPE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const getUserTypeByIdReducer = (state = initState, action) => {
+  switch (action.type) {
+    case GET_USER_TYPE_BY_ID_REQUEST:
+      return { loading: true };
+    case GET_USER_TYPE_BY_ID_SUCCESS:
+      return {
+        loading: false,
+        message: action.payload.message,
+        userType: action.payload.userType,
+      };
+    case GET_USER_TYPE_BY_ID_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Table, Tag, Space, Spin } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -6,18 +6,23 @@ import {
   getUserType,
 } from "../../../redux/actions/hrAdminActions";
 
-const UserTypeList = ({ loadToggler, setLoadToggler }) => {
+const UserTypeList = ({ loadToggler, setLoadToggler, setId, setIsVisible }) => {
   const dispatch = useDispatch();
   const { loading, userTypeList } = useSelector((state) => state.getUserType);
 
-  const deleteUser = (id) => {
-    dispatch(deleteUserType({ id }));
+  const deleteUser = async (id) => {
+    await dispatch(deleteUserType({ id }));
+    setLoadToggler(!loadToggler);
+  };
+
+  const setEditId = (id) => {
+    setId(id);
+    setIsVisible(true);
   };
 
   useEffect(() => {
     dispatch(getUserType());
-    setLoadToggler(!loadToggler);
-  }, []);
+  }, [loadToggler]);
 
   const columns = [
     {
@@ -50,7 +55,7 @@ const UserTypeList = ({ loadToggler, setLoadToggler }) => {
       key: "_id",
       render: (id) => (
         <Space size="middle">
-          {/* <a>Edit</a> */}
+          <a onClick={() => setEditId(id)}>Edit</a>
           <a onClick={() => deleteUser(id)}>Delete</a>
         </Space>
       ),

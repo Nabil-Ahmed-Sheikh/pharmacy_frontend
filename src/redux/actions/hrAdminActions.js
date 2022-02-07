@@ -6,6 +6,9 @@ import {
   GET_USER_TYPE_REQUEST,
   GET_USER_TYPE_SUCCESS,
   GET_USER_TYPE_FAIL,
+  GET_USER_TYPE_BY_ID_REQUEST,
+  GET_USER_TYPE_BY_ID_SUCCESS,
+  GET_USER_TYPE_BY_ID_FAIL,
   DELETE_USER_TYPE_REQUEST,
   DELETE_USER_TYPE_SUCCESS,
   DELETE_USER_TYPE_FAIL,
@@ -107,6 +110,53 @@ export const getUserType = () => async (dispatch, getState) => {
     );
   }
 };
+
+export const getUserTypeById =
+  ({ id }) =>
+  async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: GET_USER_TYPE_BY_ID_REQUEST,
+      });
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer " +
+            JSON.parse(localStorage.getItem("userInfo"))?.user.token,
+        },
+      };
+
+      const { data } = await axios.post(
+        `${REACT_APP_API_DOMAIN}/user/getUserType`,
+        { id },
+        config
+      );
+
+      dispatch({
+        type: GET_USER_TYPE_BY_ID_SUCCESS,
+        payload: {
+          message: data.message,
+          userTypeList: data.userTypeList,
+        },
+      });
+      message.success(data.message);
+    } catch (error) {
+      dispatch({
+        type: GET_USER_TYPE_BY_ID_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+      message.error(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      );
+    }
+  };
 
 export const deleteUserType =
   ({ id }) =>
