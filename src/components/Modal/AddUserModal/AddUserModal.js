@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Modal, Button, Spin, message } from "antd";
+import { Modal, Button, Spin } from "antd";
 import AddUserForm from "../../Form/AddUserForm/AddUserForm";
-import { addUser } from "../../../redux/actions/hrAdminActions";
+import * as hrAdminActions from "../../../redux/actions/hrAdminActions";
+import * as storeManagementActions from "../../../redux/actions/storeManagementActions";
 import "./AddUserModal.css";
 
 const AddUserModal = ({
@@ -10,29 +11,20 @@ const AddUserModal = ({
   setIsVisible,
   loading,
   message,
-  toggleLoad,
+  toggler,
+  formData,
+  setFormData,
+  closeModal,
+  setToggler,
 }) => {
   const dispatch = useDispatch();
-  const [fileList, setFileList] = useState([]);
 
   const [profileImage, setProfileImage] = useState(null);
   const [profileImagePreview, setProfileImagePreview] = useState(null);
 
-  const {
-    loading: addLoading,
-    message: addMessage,
-    error,
-  } = useSelector((state) => state.addUser);
-
-  const [formData, setFormData] = useState({
-    name: "",
-    username: "",
-    email: "",
-    phoneNo: "",
-    password: "",
-    userType: "",
-    status: "",
-  });
+  const { loading: addLoading, message: addMessage } = useSelector(
+    (state) => state.addUser
+  );
 
   const handleChangeUserType = (value) => {
     setFormData((prev) => ({ ...prev, userType: value }));
@@ -42,15 +34,15 @@ const AddUserModal = ({
     setFormData((prev) => ({ ...prev, status: value }));
   };
 
+  const handleChangeStore = (value) => {
+    setFormData((prev) => ({ ...prev, store: value }));
+  };
+
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleCancel = () => {
-    setIsVisible(false);
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     let obj = new FormData();
     obj.append("name", formData.name);
     obj.append("username", formData.username);
@@ -59,13 +51,36 @@ const AddUserModal = ({
     obj.append("password", formData.password);
     obj.append("status", formData.status);
     obj.append("userType", formData.userType);
+    obj.append("store", formData.store);
     obj.append("image", profileImage);
 
-    // for (var key of obj.entries()) {
-    //   console.log(key[0] + ", " + key[1]);
-    // }
-    dispatch(addUser(obj, toggleLoad));
+    await dispatch(hrAdminActions.addUser(obj));
+    if (addMessage === "User created") {
+      setFormData({
+        name: "",
+        username: "",
+        email: "",
+        phoneNo: "",
+        password: "",
+        userType: "",
+        store: "",
+        status: "",
+      });
+      setProfileImage(null);
+      setProfileImagePreview(null);
+      setIsVisible(false);
+    }
+
+    setToggler(!toggler);
   };
+
+  const getStores = async () => {
+    await dispatch(storeManagementActions.getStores());
+  };
+
+  useEffect(() => {
+    getStores();
+  }, []);
 
   const changeProfileImage = (e) => {
     setProfileImage(e.target.files[0]);
@@ -85,7 +100,7 @@ const AddUserModal = ({
     Modalfooter = [<Spin />];
   } else {
     Modalfooter = [
-      <Button key="back" onClick={handleCancel}>
+      <Button key="back" onClick={closeModal}>
         Cancel
       </Button>,
       <Button
@@ -102,16 +117,16 @@ const AddUserModal = ({
 
   return (
     <Modal
-      className="add_userType_modal"
       className="add-user-modal"
       title={"Add User"}
-      onCancel={handleCancel}
+      onCancel={closeModal}
       visible={isVisible}
       footer={Modalfooter}
     >
       <AddUserForm
         handleChangeUserType={handleChangeUserType}
         handleChangeStatus={handleChangeStatus}
+        handleChangeStore={handleChangeStore}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         formData={formData}

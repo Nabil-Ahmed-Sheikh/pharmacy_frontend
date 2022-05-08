@@ -53,10 +53,10 @@ const UserTypeList = ({ loadToggler, setLoadToggler, setId, setIsVisible }) => {
     {
       title: "Action",
       key: "_id",
-      render: (id) => (
+      render: (userType) => (
         <Space size="middle">
-          <a onClick={() => setEditId(id)}>Edit</a>
-          <a onClick={() => deleteUser(id)}>Delete</a>
+          <a onClick={() => setEditId(userType)}>Edit</a>
+          <a onClick={() => deleteUser(userType._id)}>Delete</a>
         </Space>
       ),
     },

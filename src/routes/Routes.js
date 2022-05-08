@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
-import HomeScreen from "../screens/HomeScreen";
+import HomeScreen from "../screens/HomeScreen/HomeScreen";
 import UserRoutes from "./UserRoutes";
 import UserDashBoard from "../components/Dashboard/UserDashBoard";
 

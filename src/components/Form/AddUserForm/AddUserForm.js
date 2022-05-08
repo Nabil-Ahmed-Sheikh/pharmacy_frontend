@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import ReactDOM from "react-dom";
 import { Checkbox, Row, Col, Divider, Input, Select } from "antd";
 import "./AddUserForm.css";
 import {
@@ -9,11 +8,16 @@ import {
   FiUserPlus,
   FiPhoneCall,
   FiKey,
-  FiPlus,
+  FiUpload,
 } from "react-icons/fi";
 import defaultImagePreview from "../../../assets/images/avatar.png";
 
 import "antd/dist/antd.css";
+
+let { REACT_APP_API_DOMAIN } = process.env;
+if (process.env.NODE_ENV === "development") {
+  REACT_APP_API_DOMAIN = "http://localhost:5000";
+}
 
 const { Option } = Select;
 
@@ -24,8 +28,12 @@ const AddUserForm = ({
   changeProfileImage,
   formData,
   profileImagePreview,
+  handleChangeStore,
 }) => {
   const { userTypeList } = useSelector((state) => state.getUserType);
+  const { loading: listStoreLoading, stores } = useSelector(
+    (state) => state.listStore
+  );
 
   return (
     <div className="add-user-form">
@@ -42,6 +50,7 @@ const AddUserForm = ({
                   name="username"
                   onChange={handleChange}
                   value={formData.username}
+                  disabled={formData.edit ? true : false}
                 />
               </div>
             </Col>
@@ -139,6 +148,24 @@ const AddUserForm = ({
             <Col sm={24} md={12}>
               <div>
                 <label>
+                  <h4>Store</h4>
+                </label>
+                <Select
+                  style={{ width: "100%" }}
+                  onChange={handleChangeStore}
+                  value={formData.store}
+                >
+                  {stores?.map((store) => (
+                    <Option key={store._id} value={store._id}>
+                      {store.name}
+                    </Option>
+                  ))}
+                </Select>
+              </div>
+            </Col>
+            <Col sm={24} md={12}>
+              <div>
+                <label>
                   <h4>Status</h4>
                 </label>
                 <Select
@@ -153,10 +180,10 @@ const AddUserForm = ({
             </Col>
             <Col sm={24} md={12}>
               <label style={{ display: "flex", flexDirection: "column" }}>
-                Select Campaign Image
+                <h4>Upload Profile Image</h4>
                 <label className="image-btn">
                   <div>
-                    <FiPlus />
+                    <FiUpload />
                   </div>
                   <input
                     id="profile-file-input"
@@ -173,7 +200,11 @@ const AddUserForm = ({
           <img
             className="add-user-form-image-preview"
             src={
-              profileImagePreview ? profileImagePreview : defaultImagePreview
+              formData.profilePhoto
+                ? REACT_APP_API_DOMAIN + "/uploads/" + formData.profilePhoto
+                : profileImagePreview
+                ? profileImagePreview
+                : defaultImagePreview
             }
           />
         </Col>

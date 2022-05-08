@@ -3,8 +3,6 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const UserRoutes = ({ component: Component, ...rest }) => {
-  //const { userLogin } = useSelector((state) => state);
-
   let authFlag = false;
   let userInfo = JSON.parse(localStorage.getItem("userInfo"));
   if (userInfo?.success && userInfo?.user) {
