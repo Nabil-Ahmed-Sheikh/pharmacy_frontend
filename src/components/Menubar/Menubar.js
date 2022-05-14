@@ -71,7 +71,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
         defaultSelectedKeys={["1"]}
         inlineCollapsed={collapsed}
       >
-        {permission.dashboard.active && (
+        {permission?.dashboard?.active && (
           <MenuItem
             key="1"
             onClick={() => goto("/dashboard")}
@@ -91,7 +91,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </MenuItem>
         )}
 
-        {permission.hrAdmin.active && (
+        {permission?.hrAdmin?.active && (
           <SubMenu key="3" title="HR Admin" icon={<ImUsers />}>
             <MenuItem key={31} onClick={() => goto("/user_types")}>
               User Type
@@ -102,7 +102,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </SubMenu>
         )}
 
-        {permission.contact.active && (
+        {permission?.contact?.active && (
           <SubMenu key="4" title="Contact" icon={<RiBubbleChartLine />}>
             <MenuItem key={41} onClick={() => goto("/customer_list")}>
               Customer List
@@ -113,7 +113,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </SubMenu>
         )}
 
-        {permission.medicine.active && (
+        {permission?.medicine?.active && (
           <SubMenu key="5" title="Medicine" icon={<IoBandage />}>
             <MenuItem key={51} onClick={() => goto("/add_medicine")}>
               Add Medicine
@@ -124,7 +124,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </SubMenu>
         )}
 
-        {permission.purchases.active && (
+        {permission?.purchases?.active && (
           <SubMenu key="6" title="Purchases" icon={<AiOutlineShoppingCart />}>
             <MenuItem key={61} onClick={() => goto("/add_purchases")}>
               Add Purchases
@@ -135,7 +135,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </SubMenu>
         )}
 
-        {permission.sales && (
+        {permission?.sales && (
           <SubMenu key="7" title="Sales" icon={<FiTrendingUp />}>
             <MenuItem key={71} onClick={() => goto("/add_sale")}>
               Add Sale
@@ -146,7 +146,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </SubMenu>
         )}
 
-        {permission.collection.active && (
+        {permission?.collection?.active && (
           <SubMenu key="8" title="Collection" icon={<IoLogoStackoverflow />}>
             <MenuItem key={81} onClick={() => goto("/add_collection")}>
               Add Collection
@@ -157,7 +157,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </SubMenu>
         )}
 
-        {permission.payment.active && (
+        {permission?.payment?.active && (
           <SubMenu key="9" title="Payment" icon={<ImStatsBars />}>
             <MenuItem key={91} onClick={() => goto("/add_payment")}>
               Add Payment
@@ -180,7 +180,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           StockMatching*
         </MenuItem>
 
-        {permission.hrManagement.active && (
+        {permission?.hrManagement?.active && (
           <SubMenu key="12" title="HRManagement" icon={<SiDraugiemdotlv />}>
             <MenuItem key={121} onClick={() => goto("/employee_type")}>
               Employee Type
@@ -197,7 +197,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </SubMenu>
         )}
 
-        {permission.account.active && (
+        {permission?.account?.active && (
           <SubMenu key="13" title="Account" icon={<AiFillDollarCircle />}>
             <MenuItem key={131} onClick={() => goto("/expense_list")}>
               Expense List{" "}
@@ -217,7 +217,7 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
           </SubMenu>
         )}
 
-        {permission.report.active && (
+        {permission?.report?.active && (
           <SubMenu key="14" title="Report" icon={<AiTwotoneContainer />}>
             <MenuItem onClick={() => goto("/cash_statement_report")}>
               Cash Statement Report
