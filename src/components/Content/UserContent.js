@@ -17,7 +17,7 @@ import AddPurchases from "../Purchases/AddPurchases/AddPurchases";
 import PurchasesList from "../Purchases/PurchasesList/PurchasesList";
 
 import AddSale from "../Sales/AddSale/AddSale";
-import SalesList from "../Sales/SalesList/SalesList";
+import SalesHistory from "../Sales/SalesHistory/SalesHistory";
 
 import AddCollection from "../Collection/AddCollection/AddCollection";
 import CollectionList from "../Collection/CollectionList/CollectionList";
@@ -91,7 +91,7 @@ const UserContent = ({ collapsed }) => {
         <Route exact path="/user/purchases_list" component={PurchasesList} />
 
         <Route exact path="/user/add_sale" component={AddSale} />
-        <Route exact path="/user/sales_list" component={SalesList} />
+        <Route exact path="/user/sales_history" component={SalesHistory} />
 
         <Route exact path="/user/add_collection" component={AddCollection} />
         <Route exact path="/user/collection_list" component={CollectionList} />

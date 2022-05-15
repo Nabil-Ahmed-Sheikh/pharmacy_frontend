@@ -140,8 +140,8 @@ const Menubar = ({ collapsed, toggleCollapsed }) => {
             <MenuItem key={71} onClick={() => goto("/add_sale")}>
               Add Sale
             </MenuItem>
-            <MenuItem key={72} onClick={() => goto("/sales_list")}>
-              Sales List
+            <MenuItem key={72} onClick={() => goto("/sales_history")}>
+              Sales History
             </MenuItem>
           </SubMenu>
         )}
