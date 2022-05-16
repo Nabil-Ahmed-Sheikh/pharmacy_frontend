@@ -63,6 +63,14 @@ const data = [
         address: 'Uttara Sector 14',
         contactnumber: '55555'
     },
+    {
+        sl: '5',
+        customername: 'Abdulllah',
+        contactperson: 'Ahmed',
+        previousdues: 10,
+        address: 'Uttara Sector 14',
+        contactnumber: '55555'
+    },
 
 
 
