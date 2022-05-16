@@ -3,4 +3,41 @@
     height: calc(100vh - 120px);
     top: 60px;
     position: absolute;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.menubar::-webkit-scrollbar{
+    display: none; /* Safari and Chrome */
+}
+
+.menubar-header-logo {
+    width: var(--sidebarWidth);
+    height: var(--sidebarWidth);
+}
+
+.menubar-header-logo>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.menubar-header-logo-shrinked {
+    width: 79px;
+    height: 79px;
+}
+
+.menubar-header-logo-shrinked>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.shrink-button {
+    width: var(--sidebarWidth);
+}
+
+.shrink-button-shrinked {
+    width: 79px;
 }

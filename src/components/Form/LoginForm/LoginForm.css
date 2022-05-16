@@ -48,6 +48,10 @@
     border-radius: 16px !important;
 }
 
+.login-spin {
+    padding: 30px !important;
+}
+
 @media only screen and (max-width: 1024px) {
     .login-form-img-div {
         display: none;

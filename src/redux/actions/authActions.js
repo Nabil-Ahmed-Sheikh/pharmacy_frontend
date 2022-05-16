@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === "development") {
   REACT_APP_API_DOMAIN = "http://localhost:5000";
 }
 
-export const login = (username, password) => async (dispatch, getState) => {
+export const login = (obj, history) => async (dispatch) => {
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,
@@ -26,7 +26,7 @@ export const login = (username, password) => async (dispatch, getState) => {
 
     const { data } = await axios.post(
       `${REACT_APP_API_DOMAIN}/auth/login`,
-      { username, password },
+      obj,
       config
     );
 
@@ -36,24 +36,30 @@ export const login = (username, password) => async (dispatch, getState) => {
     });
 
     localStorage.setItem("userInfo", JSON.stringify(data));
+    history.push("/user/dashboard");
   } catch (error) {
+    let errorMessage =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+
     dispatch({
       type: USER_LOGIN_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+      payload: errorMessage,
     });
+
+    message.error(errorMessage);
   }
 };
 
-export const logout = () => async (dispatch, getState) => {
+export const logout = (history) => async (dispatch, getState) => {
   try {
     dispatch({
       type: USER_LOGOUT,
     });
     localStorage.removeItem("userInfo");
     message.success("Logged out");
+    history.push("/login");
   } catch (error) {
     message.error("Something went wrong");
   }

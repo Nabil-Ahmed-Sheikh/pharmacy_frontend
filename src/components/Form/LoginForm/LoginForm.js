@@ -5,30 +5,24 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./LoginForm.css";
 import { login } from "../../../redux/actions/authActions";
-import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
-const LoginForm = () => {
+const LoginForm = ({ loading }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-  const location = useLocation();
+
   const history = useHistory();
-
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo, loading, error } = userLogin;
-
-  const redirect = location.search ? location.search.split("=")[1] : "/user";
-
-  useEffect(() => {
-    if (userInfo && Object.keys(userInfo).length > 0) {
-      history.push(redirect);
-    }
-  }, [history, redirect, userInfo]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(login(username, password));
+
+    let obj = {
+      username,
+      password,
+    };
+
+    dispatch(login(obj, history));
   };
 
   return (
@@ -40,6 +34,7 @@ const LoginForm = () => {
           name="username"
           type="email"
           onChange={(e) => setUsername(e.target.value)}
+          value={username}
         />
         <Input
           placeholder="Password"
@@ -47,11 +42,21 @@ const LoginForm = () => {
           type="password"
           onChange={(e) => setPassword(e.target.value)}
           style={{ marginTop: "20px" }}
+          value={password}
         />
 
-        <Button type="primary" className="login-button" onClick={submitHandler}>
-          Login
-        </Button>
+        {loading ? (
+          <Spin className="login-spin" />
+        ) : (
+          <Button
+            type="primary"
+            className="login-button"
+            onClick={submitHandler}
+          >
+            Login
+          </Button>
+        )}
+
         <Link to="/forgotpassword">Forgot Password?</Link>
       </div>
       <div className="login-form-img-div">

@@ -1,15 +1,14 @@
 .content {
     margin-left: var(--sidebarWidth);
-    margin-top: 60px;
-    height: calc(100vh - 120px);
-    width: calc(100vw - var(--sidebarWidth));
-    padding: 20px;
+    /* height: calc(100vh - 120px); */
+    max-width: calc(100vw - var(--sidebarWidth) );
+    padding: 30px;
 }
 
 .content_collapsed{
     margin-left: 80px;
-    margin-top: 60px;
-    height: calc(100vh - 120px);
+    /* margin-top: 60px; */
+    /* height: calc(100vh - 120px); */
     width: calc(100vw - 80px);
-    padding: 20px;
+    padding: 30px;
 }

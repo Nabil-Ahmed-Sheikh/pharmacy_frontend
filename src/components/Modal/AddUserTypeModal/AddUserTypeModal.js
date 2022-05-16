@@ -6,7 +6,14 @@ import AddUserTypeForm from "../../Form/AddUserTypeForm/AddUserTypeForm";
 import adminPermissions from "./utils/adminPermissionTemplate";
 import { addUserType } from "../../../redux/actions/hrAdminActions";
 
-const AddUserTypeModal = ({ isVisible, setIsVisible, loading, message }) => {
+const AddUserTypeModal = ({
+  isVisible,
+  setIsVisible,
+  loading,
+  loadToggler,
+  setLoadToggler,
+  id,
+}) => {
   const dispatch = useDispatch();
 
   let crud = {
@@ -236,11 +243,17 @@ const AddUserTypeModal = ({ isVisible, setIsVisible, loading, message }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(addUserType(formData));
+    await dispatch(addUserType(formData));
+    setLoadToggler(!loadToggler);
     setIsVisible(false);
   };
+
+  useEffect(() => {
+    if (id) {
+    }
+  }, [id]);
 
   return (
     <Modal

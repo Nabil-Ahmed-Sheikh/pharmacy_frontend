@@ -1,274 +1,138 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Modal, Button, Spin } from "antd";
 import AddUserForm from "../../Form/AddUserForm/AddUserForm";
-import { addUserType } from "../../../redux/actions/hrAdminActions";
+import * as hrAdminActions from "../../../redux/actions/hrAdminActions";
+import * as storeManagementActions from "../../../redux/actions/storeManagementActions";
+import "./AddUserModal.css";
 
-const AddUserModal = ({ isVisible, setIsVisible, loading, message }) => {
+const AddUserModal = ({
+  isVisible,
+  setIsVisible,
+  loading,
+  message,
+  toggler,
+  formData,
+  setFormData,
+  closeModal,
+  setToggler,
+}) => {
   const dispatch = useDispatch();
 
-  let crud = {
-    active: false,
-    create: false,
-    read: false,
-    update: false,
-    delete: false,
-  };
+  const [profileImage, setProfileImage] = useState(null);
+  const [profileImagePreview, setProfileImagePreview] = useState(null);
 
-  let permissions = {
-    hrAdmin: {
-      active: false,
-      users: {
-        ...crud,
-      },
-      userTypes: {
-        ...crud,
-      },
-    },
-    contact: {
-      active: false,
-      customers: {
-        ...crud,
-      },
-      suppliers: {
-        ...crud,
-      },
-    },
-    medicine: {
-      active: false,
-      medicineList: {
-        ...crud,
-      },
-    },
-    purchases: {
-      active: false,
-      purchasesList: {
-        ...crud,
-      },
-    },
-    sales: {
-      active: false,
-      salesList: {
-        ...crud,
-      },
-    },
-    collection: {
-      ...crud,
-    },
-    payment: {
-      ...crud,
-    },
-    hrManagement: {
-      active: false,
-      employeeType: {
-        ...crud,
-      },
-      designation: {
-        ...crud,
-      },
-      employeeList: {
-        ...crud,
-      },
-      monthlySalary: {
-        ...crud,
-      },
-    },
-    account: {
-      active: false,
-      journal: {
-        ...crud,
-      },
-      accountHead: {
-        ...crud,
-      },
-      subHead: {
-        ...crud,
-      },
-      bankSetup: {
-        ...crud,
-      },
-      expense: {
-        ...crud,
-      },
-      otherIncome: {
-        ...crud,
-      },
-      bankDeposit: {
-        ...crud,
-      },
-      bankWithdraw: {
-        ...crud,
-      },
-      bankTransfer: {
-        ...crud,
-      },
-    },
-    companySetup: {
-      ...crud,
-    },
-    report: {
-      active: false,
-      salesReport: false,
-      salesDetails: false,
-      customerReport: false,
-      customerDueReport: false,
-      cashStatement: false,
-      bankStatement: false,
-      MonthlySalarySheet: false,
-      collectionReport: false,
-      employeeReport: false,
-      employeeExpense: false,
-      customerLedger: false,
-      expenseHead: false,
-      accountLedger: false,
-      expenseReport: false,
-      profileAndLossReport: false,
-      employeeLedger: false,
-    },
-    dashboard: {
-      active: false,
-      cashStatement: false,
-      bankStatement: false,
-      dailySales: false,
-      monthlySales: false,
-      dailyPurchase: false,
-      monthlyPurchase: false,
-      dailyCollection: false,
-      monthlyCollection: false,
-      dailyPayment: false,
-      monthlyPayment: false,
-      dailyExpense: false,
-      monthlyExpense: false,
-    },
-  };
+  const { loading: addLoading, message: addMessage } = useSelector(
+    (state) => state.addUser
+  );
 
-  const [formData, setFormData] = useState({
-    name: "",
-    status: "INACTIVE",
-    permissions: {
-      ...permissions,
-    },
-  });
-
-  const handleChangeUserType = (e) => {
-    setFormData((prev) => ({ ...prev, name: e.target.value }));
+  const handleChangeUserType = (value) => {
+    setFormData((prev) => ({ ...prev, userType: value }));
   };
 
   const handleChangeStatus = (value) => {
     setFormData((prev) => ({ ...prev, status: value }));
   };
 
-  const handleCancel = () => {
-    setIsVisible(false);
+  const handleChangeStore = (value) => {
+    setFormData((prev) => ({ ...prev, store: value }));
   };
 
-  const handleCheck = (e) => {
-    let permission = e.target.value.split(".");
+  const handleChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
-    if (permission.length === 1) {
-      let key = permission[0];
+  const handleSubmit = async (e) => {
+    let obj = new FormData();
+    obj.append("name", formData.name);
+    obj.append("username", formData.username);
+    obj.append("email", formData.email);
+    obj.append("phoneNo", formData.phoneNo);
+    obj.append("password", formData.password);
+    obj.append("status", formData.status);
+    obj.append("userType", formData.userType);
+    obj.append("store", formData.store);
+    obj.append("image", profileImage);
 
-      let obj = { ...formData.permissions };
-      obj[key].active = e.target.checked;
+    await dispatch(hrAdminActions.addUser(obj));
+    if (addMessage === "User created") {
+      setFormData({
+        name: "",
+        username: "",
+        email: "",
+        phoneNo: "",
+        password: "",
+        userType: "",
+        store: "",
+        status: "",
+      });
+      setProfileImage(null);
+      setProfileImagePreview(null);
+      setIsVisible(false);
+    }
 
-      setFormData((prev) => ({
-        ...prev,
-        permissions: {
-          ...obj,
-        },
-      }));
-    } else if (permission.length === 2) {
-      if (
-        permission[0] === "report" ||
-        permission[0] === "dashboard" ||
-        permission[0] === "companySetup" ||
-        permission[0] === "collection" ||
-        permission[0] === "payment"
-      ) {
-        let key1 = permission[0];
-        let key2 = permission[1];
-        let obj = { ...formData.permissions };
-        obj[key1][key2] = e.target.checked;
+    setToggler(!toggler);
+  };
 
-        setFormData((prev) => ({
-          ...prev,
-          permissions: {
-            ...obj,
-          },
-        }));
-      } else {
-        let key1 = permission[0];
-        let key2 = permission[1];
-        let obj = { ...formData.permissions };
-        obj[key1][key2].active = e.target.checked;
+  const getStores = async () => {
+    await dispatch(storeManagementActions.getStores());
+  };
 
-        setFormData((prev) => ({
-          ...prev,
-          permissions: {
-            ...obj,
-          },
-        }));
+  useEffect(() => {
+    getStores();
+  }, []);
+
+  const changeProfileImage = (e) => {
+    setProfileImage(e.target.files[0]);
+    console.log(e.target.files[0]);
+    try {
+      if (e.target.files[0]) {
+        setProfileImagePreview(URL.createObjectURL(e.target.files[0]));
       }
-    } else if (permission.length === 3) {
-      let key1 = permission[0];
-      let key2 = permission[1];
-      let key3 = permission[2];
-      let obj = { ...formData.permissions };
-      obj[key1][key2][key3] = e.target.checked;
-
-      setFormData((prev) => ({
-        ...prev,
-        permissions: {
-          ...obj,
-        },
-      }));
+    } catch (e) {
+      message.error("Please upload the image again, something went wrong");
     }
   };
 
-//   const handleCheckAllPermission = (e) => {
-//     if (e.target.checked) {
-//       setFormData((prev) => ({
-//         ...prev,
-//         permissions: { ...adminPermissions },
-//       }));
-//     }
-//   };
+  let Modalfooter = [];
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(addUserType(formData));
-    setIsVisible(false);
-  };
+  if (addLoading) {
+    Modalfooter = [<Spin />];
+  } else {
+    Modalfooter = [
+      <Button key="back" onClick={closeModal}>
+        Cancel
+      </Button>,
+      <Button
+        key="submit"
+        type="primary"
+        onClick={handleSubmit}
+        disabled={loading}
+        style={{ width: "76px" }}
+      >
+        {loading ? <Spin /> : "Submit"}
+      </Button>,
+    ];
+  }
 
   return (
     <Modal
-      className="add_userType_modal"
-      style={{ width: "80%" }}
+      className="add-user-modal"
       title={"Add User"}
-      onCancel={handleCancel}
+      onCancel={closeModal}
       visible={isVisible}
-      footer={[
-        <Button key="back" onClick={handleCancel}>
-          Cancel
-        </Button>,
-        <Button
-          key="submit"
-          type="primary"
-          onClick={handleSubmit}
-          disabled={loading}
-          style={{ width: "76px" }}
-        >
-          {loading ? <Spin /> : "Submit"}
-        </Button>,
-      ]}
+      footer={Modalfooter}
     >
       <AddUserForm
         handleChangeUserType={handleChangeUserType}
         handleChangeStatus={handleChangeStatus}
+        handleChangeStore={handleChangeStore}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
         formData={formData}
-        handleCheck={handleCheck}
-        // handleCheckAllPermission={handleCheckAllPermission}
         loading={loading}
+        changeProfileImage={changeProfileImage}
+        profileImagePreview={profileImagePreview}
       />
     </Modal>
   );

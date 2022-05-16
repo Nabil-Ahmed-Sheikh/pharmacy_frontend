@@ -2,6 +2,8 @@ import React from "react";
 import "./Content.css";
 import { Route, Switch } from "react-router-dom";
 
+import StoreManagement from "../StoreManagement/StoreManagement";
+
 import UserTypes from "../HRAdmin/UsersType/UserTypes";
 import Users from "../HRAdmin/User/Users";
 
@@ -9,13 +11,13 @@ import CustomerList from "../Contact/CustomerList/CustomerList";
 import SupplierList from "../Contact/SupplierList/SupplierList";
 
 import AddMedicine from "../Medicine/AddMedicine/AddMedicine";
-import MedicineList from "../Medicine/MedicineList/MedicineList";
+import Medicine from "../Medicine/Medicine/Medicine";
 
 import AddPurchases from "../Purchases/AddPurchases/AddPurchases";
 import PurchasesList from "../Purchases/PurchasesList/PurchasesList";
 
 import AddSale from "../Sales/AddSale/AddSale";
-import SalesList from "../Sales/SalesList/SalesList";
+import SalesHistory from "../Sales/SalesHistory/SalesHistory";
 
 import AddCollection from "../Collection/AddCollection/AddCollection";
 import CollectionList from "../Collection/CollectionList/CollectionList";
@@ -58,10 +60,10 @@ import ExpenseDetailsReport from "../Report/ExpenseDetailsReport/ExpenseDetailsR
 import InvoiceWiseProfit from "../Report/InvoiceWiseProfit/InvoiceWiseProfit";
 import NetProfitLoss from "../Report/NetProfitLoss/NetProfitLoss";
 
-import GenericList from "../Setting/GenericList/GenericList";
-import CompanyList from "../Setting/CompanyList/CompanyList";
+import Generic from "../Setting/Generic/Generic";
+import Company from "../Setting/Company/Company";
 import MedicineForm from "../Setting/MedicineForm/MedicineForm";
-import RackList from "../Setting/RackList/RackList";
+import Rack from "../Setting/Rack/Rack";
 import JournalList from "../Setting/JournalList/JournalList";
 import AccountHead from "../Setting/AccountHead/AccountHead";
 import SubHead from "../Setting/SubHead/SubHead";
@@ -74,6 +76,8 @@ const UserContent = ({ collapsed }) => {
   return (
     <div className={collapsed ? "content_collapsed" : "content"}>
       <Switch>
+        <Route path="/user/store_management" component={StoreManagement} />
+
         <Route exact path="/user/user_types" component={UserTypes} />
         <Route exact path="/user/users" component={Users} />
 
@@ -81,13 +85,13 @@ const UserContent = ({ collapsed }) => {
         <Route exact path="/user/supplier_list" component={SupplierList} />
 
         <Route exact path="/user/add_medicine" component={AddMedicine} />
-        <Route exact path="/user/medicine_list" component={MedicineList} />
+        <Route exact path="/user/medicine_list" component={Medicine} />
 
         <Route exact path="/user/add_purchases" component={AddPurchases} />
         <Route exact path="/user/purchases_list" component={PurchasesList} />
 
         <Route exact path="/user/add_sale" component={AddSale} />
-        <Route exact path="/user/sales_list" component={SalesList} />
+        <Route exact path="/user/sales_history" component={SalesHistory} />
 
         <Route exact path="/user/add_collection" component={AddCollection} />
         <Route exact path="/user/collection_list" component={CollectionList} />
@@ -162,10 +166,10 @@ const UserContent = ({ collapsed }) => {
         <Route exact path="/user/invoice_wise_profit" component={InvoiceWiseProfit}/>
         <Route exact path="/user/net_profit_loss" component={NetProfitLoss} />
 
-        <Route exact path="/user/generic_list" component={GenericList} />
-        <Route exact path="/user/company_list" component={CompanyList} />
+        <Route exact path="/user/generic_list" component={Generic} />
+        <Route exact path="/user/company_list" component={Company} />
         <Route exact path="/user/medicine_form" component={MedicineForm} />
-        <Route exact path="/user/rack_list" component={RackList} />
+        <Route exact path="/user/rack_list" component={Rack} />
         <Route exact path="/user/journal_list" component={JournalList} />
         <Route exact path="/user/account_head" component={AccountHead} />
         <Route exact path="/user/sub_head" component={SubHead} />

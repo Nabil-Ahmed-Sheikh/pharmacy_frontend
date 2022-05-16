@@ -1,0 +1,6 @@
+.add-sales-button-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+}

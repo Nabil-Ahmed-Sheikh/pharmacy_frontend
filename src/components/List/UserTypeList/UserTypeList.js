@@ -1,77 +1,70 @@
-import React from "react";
-import { Table, Tag, Space } from "antd";
-import { useDispatch } from "react-redux";
-import { deleteUserType } from "../../../redux/actions/hrAdminActions";
+import React, { useEffect, useState } from "react";
+import { Table, Tag, Space, Spin } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteUserType,
+  getUserType,
+} from "../../../redux/actions/hrAdminActions";
 
-const UserTypeList = () => {
+const UserTypeList = ({ loadToggler, setLoadToggler, setId, setIsVisible }) => {
   const dispatch = useDispatch();
+  const { loading, userTypeList } = useSelector((state) => state.getUserType);
+
+  const deleteUser = async (id) => {
+    await dispatch(deleteUserType({ id }));
+    setLoadToggler(!loadToggler);
+  };
+
+  const setEditId = (id) => {
+    setId(id);
+    setIsVisible(true);
+  };
+
+  useEffect(() => {
+    dispatch(getUserType());
+  }, [loadToggler]);
 
   const columns = [
     {
-      title: "Name",
+      title: "User Type",
       dataIndex: "name",
       key: "name",
       render: (text) => <a>{text}</a>,
     },
+
     {
-      title: "Tags",
-      key: "tags",
-      dataIndex: "tags",
-      render: (tags) => (
-        <>
-          {tags.map((tag) => {
-            let color = tag.length > 5 ? "geekblue" : "green";
-            if (tag === "loser") {
-              color = "volcano";
-            }
-            return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
-              </Tag>
-            );
-          })}
-        </>
-      ),
+      title: "status",
+      dataIndex: "status",
+      key: "status",
+      render: (status) => {
+        let color = "geekblue";
+        if (status === "INACTIVE") {
+          color = "volcano";
+        } else if (status === "ACTIVE") {
+          color = "green";
+        }
+        return (
+          <Tag color={color} key={status}>
+            {status.toUpperCase()}
+          </Tag>
+        );
+      },
     },
     {
       title: "Action",
-      key: "action",
-      render: (text, record) => (
+      key: "_id",
+      render: (userType) => (
         <Space size="middle">
-          <a onClick={() => dispatch(deleteUserType({ id: "nayeem" }))}>Edit</a>
-          <a>Delete</a>
+          <a onClick={() => setEditId(userType)}>Edit</a>
+          <a onClick={() => deleteUser(userType._id)}>Delete</a>
         </Space>
       ),
     },
   ];
 
-  const data = [
-    {
-      key: "1",
-      name: "John Brown",
-      age: 32,
-      address: "New York No. 1 Lake Park",
-      tags: ["nice", "developer"],
-    },
-    {
-      key: "2",
-      name: "Jim Green",
-      age: 42,
-      address: "London No. 1 Lake Park",
-      tags: ["loser"],
-    },
-    {
-      key: "3",
-      name: "Joe Black",
-      age: 32,
-      address: "Sidney No. 1 Lake Park",
-      tags: ["cool", "teacher"],
-    },
-  ];
-
   return (
     <>
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={userTypeList} />
     </>
   );
 };

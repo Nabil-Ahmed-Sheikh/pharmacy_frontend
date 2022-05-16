@@ -1,0 +1,16 @@
+.home-background {
+    background-image: url("../../assets/images/home_bg.jpg");
+    height: calc(100vh - var(--headerHeight) - var(--footerHeight));
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.home-background-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: calc(100vh - var(--headerHeight) - var(--footerHeight));
+    width: 100%;
+    position: absolute;
+    top: var(--headerHeight);
+    left: 0;
+}

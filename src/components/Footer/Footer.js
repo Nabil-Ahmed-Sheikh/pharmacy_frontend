@@ -3,7 +3,7 @@ import "./Footer.css";
 const AppFooter = () => {
   return (
     <div className="footer">
-      <h2>Footer</h2>
+      <p>Pharmacy Management System ©2022 Created by Apps Zones</p>
     </div>
   );
 };
