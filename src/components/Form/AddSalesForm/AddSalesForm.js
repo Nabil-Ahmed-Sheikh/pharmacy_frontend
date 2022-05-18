@@ -38,7 +38,6 @@ const AddSalesForm = () => {
   };
 
   const handleCustomerNameChange = (value) => {
-    // setFormData((prev) => ({ ...prev, customerName: value }));
     let customer = contacts?.filter((contact) => contact._id === value)[0];
     setFormData((prev) => ({
       ...prev,
