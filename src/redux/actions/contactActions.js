@@ -11,6 +11,9 @@ import {
   DELETE_CONTACT_REQUEST,
   DELETE_CONTACT_SUCCESS,
   DELETE_CONTACT_FAIL,
+  LIST_ACTIVE_CONTACT_REQUEST,
+  LIST_ACTIVE_CONTACT_SUCCESS,
+  LIST_ACTIVE_CONTACT_FAIL,
 } from "../constants/contactConstants";
 import { message } from "antd";
 import axios from "axios";
@@ -56,6 +59,55 @@ export const getContacts = (obj) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LIST_CONTACT_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    message.error(
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    );
+  }
+};
+
+export const getActiveContacts = (obj) => async (dispatch) => {
+  try {
+    dispatch({
+      type: LIST_ACTIVE_CONTACT_REQUEST,
+    });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer " + JSON.parse(localStorage.getItem("userInfo"))?.user.token,
+      },
+    };
+
+    const { data } = await axios.post(
+      `${REACT_APP_API_DOMAIN}/contact/listActiveContact`,
+      { ...obj },
+      config
+    );
+
+    dispatch({
+      type: LIST_ACTIVE_CONTACT_SUCCESS,
+      payload: {
+        message: data.message,
+        contacts: data.suppliers
+          ? data.suppliers
+          : data.customers
+          ? data.customers
+          : [],
+        count: data.count,
+      },
+    });
+    // message.success(data.message);
+  } catch (error) {
+    dispatch({
+      type: LIST_ACTIVE_CONTACT_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

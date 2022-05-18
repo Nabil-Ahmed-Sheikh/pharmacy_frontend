@@ -11,6 +11,9 @@ import {
   DELETE_CONTACT_REQUEST,
   DELETE_CONTACT_SUCCESS,
   DELETE_CONTACT_FAIL,
+  LIST_ACTIVE_CONTACT_REQUEST,
+  LIST_ACTIVE_CONTACT_SUCCESS,
+  LIST_ACTIVE_CONTACT_FAIL,
 } from "../constants/contactConstants";
 
 export const addContactReducer = (state = {}, action) => {
@@ -41,6 +44,27 @@ export const listContactReducer = (
         count: action.payload.count,
       };
     case LIST_CONTACT_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const listActiveContactReducer = (
+  state = { contacts: [], count: 0 },
+  action
+) => {
+  switch (action.type) {
+    case LIST_ACTIVE_CONTACT_REQUEST:
+      return { loading: true };
+    case LIST_ACTIVE_CONTACT_SUCCESS:
+      return {
+        loading: false,
+        message: action.payload.message,
+        contacts: action.payload.contacts,
+        count: action.payload.count,
+      };
+    case LIST_ACTIVE_CONTACT_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

@@ -22,6 +22,7 @@ import {
 import {
   addContactReducer,
   listContactReducer,
+  listActiveContactReducer,
   editContactReducer,
   deleteContactReducer,
 } from "./contactReducer";
@@ -86,6 +87,7 @@ const rootReducer = combineReducers({
   // contact
   addContact: addContactReducer,
   listContact: listContactReducer,
+  listActiveContact: listActiveContactReducer,
   editContact: editContactReducer,
   deleteContact: deleteContactReducer,
   // generic

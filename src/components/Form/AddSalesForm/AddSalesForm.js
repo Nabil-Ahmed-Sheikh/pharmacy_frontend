@@ -1,41 +1,20 @@
 import React, { useState } from "react";
-import {
-  Card,
-  Input,
-  Button,
-  Select,
-  Row,
-  Col,
-  Tooltip,
-  DatePicker,
-  Table,
-} from "antd";
-import {
-  FaAddressCard,
-  FaRegMoneyBillAlt,
-  FaHandshake,
-  FaRegPlusSquare,
-} from "react-icons/fa";
-import { FiUser } from "react-icons/fi";
-const selectStyles = {
-  width: "calc(100% - 32px)",
-};
+import { useDispatch, useSelector } from "react-redux";
+import { debounce } from "lodash";
+import { Card, Input, Select, Row, Col, DatePicker } from "antd";
+import { FaAddressCard, FaRegMoneyBillAlt } from "react-icons/fa";
 
-const formHeaderStyles = {
-  backgroundColor: "#000",
+import * as contactActions from "../../../redux/actions/contactActions";
 
-};
-
-
-
-const toolTipButtonStyle = {
-  padding: "3.1px 1px",
-};
+const { Option } = Select;
 
 const AddSalesForm = () => {
+  const dispatch = useDispatch();
+  const { contacts } = useSelector((state) => state.listActiveContact);
+
   let [formData, setFormData] = useState({
-    customerName: "",
-    totalAmount: 0.00,
+    phoneNo: "",
+    totalAmount: 0.0,
     discount: 0.0,
     less: 0.0,
     cashReceived: 0.0,
@@ -43,8 +22,28 @@ const AddSalesForm = () => {
     refundAmount: 0.0,
   });
 
+  const callCustomerList = async (value) => {
+    await dispatch(
+      contactActions.getActiveContacts({
+        type: "customer",
+        page: 1,
+        limit: 10,
+        searchTerm: value,
+      })
+    );
+  };
+
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleCustomerNameChange = (value) => {
+    // setFormData((prev) => ({ ...prev, customerName: value }));
+    let customer = contacts?.filter((contact) => contact._id === value)[0];
+    setFormData((prev) => ({
+      ...prev,
+      phoneNo: customer?.phoneNo,
+    }));
   };
 
   const handleSubmit = () => {
@@ -62,22 +61,27 @@ const AddSalesForm = () => {
           <Col sm={24} md={6}>
             <Input.Group compact>
               <label>
-                <h4>Customer Name *</h4>
+                <h4>Customer Name</h4>
               </label>
-              <br />
-              <Input
-                addonBefore={<FiUser />}
-                name="name"
+              <Select
                 showSearch
-                placeholder="Please Enter Your Name"
-                onChange={handleChange}
-                value={formData.customerName}
-                suffixIcon={<FaAddressCard />}
-                style={selectStyles}
-              />
-              <Tooltip>
-                <Button style={toolTipButtonStyle} icon={<FaRegPlusSquare />} />
-              </Tooltip>
+                placeholder="Customer Name"
+                optionFilterProp="children"
+                style={{ width: "100%" }}
+                onChange={handleCustomerNameChange}
+                onSearch={debounce(callCustomerList, 500)}
+                filterOption={(input, option) =>
+                  option.children.toLowerCase().indexOf(input.toLowerCase()) >=
+                  0
+                }
+                value={formData.generic}
+              >
+                {contacts?.map((contact) => (
+                  <Option key={contact._id} value={contact._id}>
+                    {contact.contactName}
+                  </Option>
+                ))}
+              </Select>
             </Input.Group>
             <br />
           </Col>
@@ -90,7 +94,7 @@ const AddSalesForm = () => {
                 size="default"
                 placeholder="Mobile Number"
                 onChange={handleChange}
-                value={formData.mobileuumber}
+                value={formData.phoneNo}
                 addonBefore={<FaRegMoneyBillAlt />}
               />
             </Input.Group>
@@ -152,9 +156,7 @@ const AddSalesForm = () => {
                   <th style={{ textAlign: "center" }}>Action</th>
                 </tr>
               </thead>
-              <tbody>
-
-              </tbody>
+              <tbody></tbody>
             </table>
           </Col>
           <Col sm={24} md={6}>
@@ -260,11 +262,10 @@ const AddSalesForm = () => {
             </Input.Group>
             <br />
           </Col>
-
         </Row>
         <br />
       </Card>
-    </div >
+    </div>
   );
 };
 

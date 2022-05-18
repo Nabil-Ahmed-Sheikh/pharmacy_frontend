@@ -240,7 +240,7 @@ const AddMedicineForm = () => {
                 optionFilterProp="children"
                 style={{ width: "100%" }}
                 onChange={handleGenericChange}
-                onSearch={onGenericSearch}
+                onSearch={debounce(onGenericSearch, 500)}
                 filterOption={(input, option) =>
                   option.children.toLowerCase().indexOf(input.toLowerCase()) >=
                   0
