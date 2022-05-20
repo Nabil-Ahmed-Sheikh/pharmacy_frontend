@@ -5,12 +5,14 @@ import { Card, Input, Select, Row, Col, DatePicker } from "antd";
 import { FaAddressCard, FaRegMoneyBillAlt } from "react-icons/fa";
 
 import * as contactActions from "../../../redux/actions/contactActions";
+import * as medicineActions from "../../../redux/actions/medicineActions";
 
 const { Option } = Select;
 
 const AddSalesForm = () => {
   const dispatch = useDispatch();
   const { contacts } = useSelector((state) => state.listActiveContact);
+  const { medicines } = useSelector((state) => state.listActiveMedicine);
 
   let [formData, setFormData] = useState({
     phoneNo: "",
@@ -33,6 +35,14 @@ const AddSalesForm = () => {
     );
   };
 
+  const callMedicineList = async (value) => {
+    await dispatch(
+      medicineActions.getActiveMedicines({
+        searchTerm: value,
+      })
+    );
+  };
+
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -49,9 +59,7 @@ const AddSalesForm = () => {
     console.log(formData);
   };
 
-  const handleProductNameChange = () => {
-    console.log("Wording");
-  };
+
 
   return (
     <div>
@@ -137,9 +145,17 @@ const AddSalesForm = () => {
               <Select
                 showSearch
                 name="productName"
-                onChange={handleProductNameChange}
+                optionFilterProp="children"
                 style={{ width: "100%" }}
-              ></Select>
+                onSearch={debounce(callMedicineList, 500)}
+              >
+                {medicines?.map((medicine) => (
+                  <Option key={medicine._id} value={medicine._id}>
+                    {medicine.medicineName}
+                  </Option>
+                ))}
+              </Select>
+
             </Input.Group>
             <br />
             <table className="pharma-table">
